@@ -92,6 +92,34 @@ grid-template-areas:
     text-align: center;
     display: flex;
     flex-direction: column;
+    .question-navigation-container {
+      display: flex;
+      flex-direction: row;
+      width: 95%;
+      margin:5px auto;
+        .next-answer {
+          display: inline-block;
+          flex-grow: 1;
+          padding:10px;
+          text-align: left;
+        }
+        .next-question {
+          display: inline-block;
+          flex-grow: 1;
+          padding: 10px;
+          text-align: right;
+        }
+        .next-answer,
+        .next-question {
+          cursor: pointer;
+          span {
+            font-size: 1rem;
+            font-weight: bold;
+            background: $ascent-color;
+            padding: 10px;
+          }
+        }
+    }
       .question-box {
         grid-area: question-box;
         width: 95%;
@@ -112,7 +140,7 @@ grid-template-areas:
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: calc(100% - 100px);
+        min-height: calc(100% - 150px);
         .answer-list {
           display: flex;
           flex-direction: row;
@@ -160,6 +188,7 @@ grid-template-areas:
         flex-wrap: wrap;
         li {
           display: inline-block;
+          cursor: pointer;
           font-size: 2em;
           font-weight: bolder;
           line-height: 50px;
