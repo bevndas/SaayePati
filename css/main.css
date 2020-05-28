@@ -1,14 +1,70 @@
 * {
+  box-sizing: border-box;
   padding: 0;
   margin: 0; }
 
-.task {
+.main-container {
+  position: relative;
   display: grid;
-  -webkit-transition: all .5s;
-  transition: all .5s;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
-  background: linear-gradient(to bottom, white, black); }
+  background: black;
+  color: white;
+  grid-gap: 5px;
+  grid-template-columns: 1em 4fr 2fr 1em;
+  grid-template-rows: 1em 40vh 10em calc(60vh - 12em - 20px) 1em;
+  grid-template-areas: ". . . ." ". zoom prize ." ". question prize ." ". question lifeline . " ". . . ."; }
+  .main-container .zoom-container {
+    grid-area: zoom; }
+  .main-container .prize-chart-container {
+    grid-area: prize; }
+    .main-container .prize-chart-container .prize-chart-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      overflow-y: scroll; }
+      .main-container .prize-chart-container .prize-chart-box .prize-list {
+        list-style-type: none; }
+        .main-container .prize-chart-container .prize-chart-box .prize-list li {
+          font-size: 1.5rem;
+          font-weight: normal;
+          margin: 0.3em 0;
+          transform: scale(1);
+          transition: transform 150ms ease-in; }
+          .main-container .prize-chart-container .prize-chart-box .prize-list li.active-prize {
+            transform: scale(1.7);
+            font-weight: bold;
+            margin: 0.5em 0;
+            border-radius: 50%; }
+          .main-container .prize-chart-container .prize-chart-box .prize-list li.bronze {
+            box-shadow: inset 0 0 10px 4px #cd7f32, 0 0 15px 8px #cd7f32; }
+          .main-container .prize-chart-container .prize-chart-box .prize-list li.silver {
+            box-shadow: inset 0 0 10px 4px white, 0 0 15px 8px white; }
+          .main-container .prize-chart-container .prize-chart-box .prize-list li.gold {
+            box-shadow: inset 0 0 10px 4px gold, 0 0 15px 8px gold; }
+        .main-container .prize-chart-container .prize-chart-box .prize-list .line-break {
+          position: relative;
+          display: block;
+          height: 4px; }
+          .main-container .prize-chart-container .prize-chart-box .prize-list .line-break span.line-break-left,
+          .main-container .prize-chart-container .prize-chart-box .prize-list .line-break span.line-break-right {
+            position: absolute;
+            display: block;
+            height: 3px;
+            width: 4.5em;
+            background: white; }
+          .main-container .prize-chart-container .prize-chart-box .prize-list .line-break span.line-break-left {
+            left: -6em; }
+          .main-container .prize-chart-container .prize-chart-box .prize-list .line-break span.line-break-right {
+            right: -6em; }
+          .main-container .prize-chart-container .prize-chart-box .prize-list .line-break span.milestone-limit {
+            background: gold; }
+  .main-container .question-container {
+    grid-area: question; }
+  .main-container .life-line-container {
+    grid-area: lifeline; }
+  .main-container .prize-chart-container,
+  .main-container .question-container,
+  .main-container .life-line-container {
+    border: 5px solid gold;
+    border-radius: 5px; }

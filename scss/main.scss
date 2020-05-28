@@ -1,10 +1,103 @@
 *{
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
-.task {
-  display: grid;
- transition: all .5s;
- user-select: none;
- background: linear-gradient(to bottom, white, black);
+// variables
+$primary-color: black;
+$ascent-color: gold;
+$light-color: white;
+$warning-color: red;
+$affirmative-color: lime;
+$disabled-color: lightgray;
+$bronze-color: #cd7f32;
+///////////
+
+.main-container {
+  position: relative;
+display: grid;
+background: $primary-color;
+color: white;
+grid-gap: 5px;
+grid-template-columns: 1em 4fr 2fr 1em;
+grid-template-rows: 1em 40vh  10em calc(60vh - 12em - 20px) 1em;
+grid-template-areas:
+          ". . . ."
+          ". zoom prize ."
+          ". question prize ."
+          ". question lifeline . "
+          ". . . .";
+  .zoom-container {
+    grid-area: zoom;
+}
+  .prize-chart-container{
+    grid-area: prize;
+    .prize-chart-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      overflow-y: scroll;
+      .prize-list {
+        list-style-type: none;
+          li {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin: 0.3em 0;
+            transform: scale(1);
+            transition: transform 150ms ease-in;
+            &.active-prize {
+              transform: scale(1.7);
+              font-weight: bold;
+              margin: 0.5em 0;
+              border-radius: 50%;
+            }
+            &.bronze {
+              box-shadow: inset 0 0 10px 4px $bronze-color, 0 0 15px 8px $bronze-color;
+            }
+            &.silver {
+              box-shadow: inset 0 0 10px 4px white, 0 0 15px 8px white;
+            }
+            &.gold{
+              box-shadow: inset 0 0 10px 4px $ascent-color, 0 0 15px 8px $ascent-color;
+            }
+          }
+          .line-break {
+            position: relative;
+            display: block;
+            height: 4px;
+            span.line-break-left,
+            span.line-break-right {
+              position: absolute;
+              display: block;
+              height: 3px;
+              width: 4.5em;
+              background: $light-color;
+            }
+            span.line-break-left {
+              left: -6em;
+            }
+            span.line-break-right {
+            right: -6em;
+            }
+            span.milestone-limit {
+              background: $ascent-color;
+            }
+          }
+      }
+    }
+  }
+  .question-container{
+    grid-area: question;
+  }
+  .life-line-container {
+    grid-area: lifeline;
+  }
+  .prize-chart-container,
+  .question-container,
+  .life-line-container {
+    border: 5px solid $ascent-color;
+    border-radius: 5px;
+  }
 }

@@ -2,13 +2,10 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 
-const autoprefixerOptions = {
-   browsers: ['last 2 versions', '> 5%', 'Firefox ESR']
-}
 function style() {
     return gulp.src('scss/main.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer(autoprefixerOptions))
+        .pipe(autoprefixer())
         .pipe(gulp.dest('css'))
         .pipe(browserSync.stream());
 }
