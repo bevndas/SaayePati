@@ -60,11 +60,55 @@
           .main-container .prize-chart-container .prize-chart-box .prize-list .line-break span.milestone-limit {
             background: gold; }
   .main-container .question-container {
-    grid-area: question; }
+    grid-area: question;
+    text-align: center;
+    display: flex;
+    flex-direction: column; }
+    .main-container .question-container .question-box {
+      grid-area: question-box;
+      width: 95%;
+      margin: 5px auto;
+      min-height: 100px;
+      border: 1px solid gold;
+      padding: 10px 5px; }
+      .main-container .question-container .question-box p {
+        font-size: 1.5rem;
+        line-height: 2.7em; }
+    .main-container .question-container .answer-box {
+      grid-area: answer-box;
+      width: 95%;
+      margin: 5px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100% - 100px); }
+      .main-container .question-container .answer-box .answer-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        list-style-type: none; }
+        .main-container .question-container .answer-box .answer-list li {
+          position: relative;
+          width: calc(50% - 10px);
+          display: block;
+          padding: 30px 5px;
+          border: 1px solid gold;
+          margin: 5px;
+          font-size: 1.6rem;
+          transform: scale(1);
+          transition: transform 200ms ease-in-out;
+          cursor: pointer; }
+          .main-container .question-container .answer-box .answer-list li:hover {
+            transform: scale(1.05);
+            background: gold;
+            box-shadow: inset 0 0 5px 45px gold, 0 0 15px 8px gold; }
+          .main-container .question-container .answer-box .answer-list li span {
+            position: absolute;
+            left: 20px; }
   .main-container .life-line-container {
     grid-area: lifeline; }
   .main-container .prize-chart-container,
-  .main-container .question-container,
   .main-container .life-line-container {
     border: 5px solid gold;
     border-radius: 5px; }
