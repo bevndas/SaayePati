@@ -38,7 +38,6 @@ grid-template-areas:
       justify-content: center;
       height: 100%;
       text-align: center;
-      overflow-y: scroll;
       .prize-list {
         list-style-type: none;
           li {
@@ -98,6 +97,7 @@ grid-template-areas:
         width: 95%;
         margin: 5px auto;
         min-height: 100px;
+        border-radius: 20px;
         border: 1px solid $ascent-color;
         padding: 10px 5px;
           p {
@@ -124,7 +124,8 @@ grid-template-areas:
             width: calc(50% - 10px);
             display: block;
             padding: 30px 5px;
-            border: 1px solid gold;
+            border: 1px solid $ascent-color;
+            border-radius: 20px;
             margin: 5px;
             font-size: 1.6rem;
             transform: scale(1);
