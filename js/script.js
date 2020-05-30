@@ -17,6 +17,7 @@ const welcomeBanner = getElem('data-welcome');
 const congratulationBanner = getElem('data-congratulation');
 const loserBanner = getElem('data-loser');
 const bannerButton = getElem('data-banner-button');
+const answerOptions = ['A.', 'B.', 'C.', 'D.'];
 const TIME_LIMIT = 20;
 const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
@@ -29,18 +30,30 @@ const COLOR_CODES = {
    threshold: WARNING_THRESHOLD
  }
 };
-const prizeThreshold = {
+let prizeThreshold = {
   0: {
-    reached: false
+    index: 0,
+    reached: false,
+    level: "null",
+    nextLevel: "bronze"
   },
   4: {
-    reached: false
+    index: 4,
+    reached: false,
+    level: "bronze",
+    nextLevel: "silver"
   },
   7: {
-    reached: false
+    index: 7,
+    reached: false,
+    level: "silver",
+    nextLevel: "gold"
   },
   10: {
-    reached: false
+    index: 10,
+    reached: false,
+    level: "gold",
+    nextLevel: "null"
   }
 }
 let currentBannerType;
@@ -63,7 +76,7 @@ var disableLifeLineButton =  {
   poll: false,
   timesTwo: false
 };
-const answerOptions = ['A.', 'B.', 'C.', 'D.'];
+
 var currentQuestionAnswer;
 var currentLevel = 0;
 
@@ -132,17 +145,96 @@ function fetchQuestion() {
   })
 }
 function initGame() {
+  resetGameDesign();
   resetGameStates();
   resetBannerStates();
   fetchQuestion();
   gameStarted = true;
 }
+function resetGameDesign() {
+  resetPrizeList();
+  resetLifeLine();
+  resetQuestionContainer();
+}
+function resetPrizeList() {
+  const classLevel = getLevelClass();
+  prizeList[currentLevel + 1].classList.remove(classLevel);
+  resetLimitMilestone();
+}
+function resetLimitMilestone() {
+    const silverLimit = getElem('data-silver').getElementsByTagName('span');
+    const goldLimit = getElem('data-gold').getElementsByTagName('span');
+    for(let i = 0;i < 2; i++) {
+      silverLimit[i].classList.remove('milestone-limit');
+      goldLimit[i].classList.remove('milestone-limit');
+    }
+}
+function resetLifeLine() {
+
+}
+function resetQuestionContainer() {
+
+}
+function getLevelClass() {
+  const threshold = getPrizeThresholdInfo();
+  return threshold['nextLevel'];
+}
+function getPrizeThresholdInfo() {
+  let prizeIndexArray = [];
+  let prizeIndex;
+  for (const index in prizeThreshold) {
+    if (index <= currentLevel) {
+        prizeIndexArray.push(index)
+    }
+  }
+  prizeIndex = Math.max(...prizeIndexArray);
+  return prizeThreshold[prizeIndex];
+}
 function resetGameStates() {
   gameWon = false;
   gameStarted = false;
+  answerBox = null;
+  answerList= null;
+  answerListElems = null;
+  answerCounter = 0;
+  questionBank = null;
+  currentLevel = 0;
+  twoTimesTempAnswer = false;
+  disableLifeLineButton =  {
+    fiftyFifty: false,
+    google: false,
+    poll: false,
+    timesTwo: false
+  };
+  prizeThreshold = {
+    0: {
+      index: 0,
+      reached: false,
+      level: "null",
+      nextLevel: "bronze"
+    },
+    4: {
+      index: 4,
+      reached: false,
+      level: "bronze",
+      nextLevel: "silver"
+    },
+    7: {
+      index: 7,
+      reached: false,
+      level: "silver",
+      nextLevel: "gold"
+    },
+    10: {
+      index: 10,
+      reached: false,
+      level: "gold",
+      nextLevel: "null"
+    }
+  };
 }
 function setBannerButtonStates() {
-  bannerButton.innerText = gameStarted ? 'Return': 'Start';
+  bannerButton.innerText = gameStarted ? 'Return': 'Enter';
   if  (gameStarted && !gameWon) {
         bannerButton.classList.add('lost-button');
         return;
@@ -353,16 +445,7 @@ function setLostMessage() {
       loserBanner.innerHTML = `Sorry! Wrong Answer <br> You win ${prize}`;
 }
 function getPrizeValue() {
-    let prizeVal;
-    let prizeIndexArray = [];
-    let prizeIndex;
-    for(const index in prizeThreshold) {
-      console.log('index', index);
-      if (index <= currentLevel) {
-          prizeIndexArray.push(index);
-      }
-    }
-    prizeIndex = Math.max(...prizeIndexArray);
+    let prizeIndex = getPrizeThresholdInfo()['index'];
     prizeVal = prizeList[prizeIndex].innerText;
     return `Rs ${prizeVal}`;
 }
@@ -409,7 +492,7 @@ function timesTwoLogic() {
 }
 function getTwoAnswerToBeRemoved() {
   const ansToBeExcluded = currentQuestionAndAnswers['answers'].findIndex(ansObj => ansObj['status'] === "true");
-   let rand = [];
+     let rand = [];
  let setData = [0,1,2,3];
   setData.splice(ansToBeExcluded, 1);
  while(setData.length > 1) {

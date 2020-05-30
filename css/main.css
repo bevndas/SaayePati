@@ -376,9 +376,9 @@
   font-weight: bold;
   cursor: pointer; }
 
-.start-or-won {
+.enter-or-won {
   background: gold; }
-  .start-or-won:hover {
+  .enter-or-won:hover {
     box-shadow: inset 0 0 5px 45px gold, 0 0 15px 8px gold; }
 
 .lost-button {
