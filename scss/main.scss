@@ -118,6 +118,7 @@ $bronze-color: #cd7f32;
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
       .timer-container {
               .base-timer {
                           position: relative;
@@ -165,6 +166,43 @@ $bronze-color: #cd7f32;
                   transform: scaleX(-1);
                   }
                     }
+          .ready-button,
+          .quit-button {
+            position: absolute;
+            text-align: center;
+            color: white;
+            background: $ascent-color;
+            font-weight: bolder;
+            cursor: pointer;
+
+          }
+        .quit-button {
+                top: 0.1em;
+                right: 0.7em;
+                height: 4em;
+                width: 4em;
+                border-radius: 50%;
+                font-size: 2rem;
+                line-height: 3.3em;
+                background: $primary-color;
+                color: $ascent-color;
+                border: 9px solid $ascent-color;
+                  &:hover {
+                      border-color: $wrong-color;
+                      color: $light-color;
+                      background: $wrong-color;
+                      box-shadow:inset 0 0 5px 45px $wrong-color, 0 0 15px 8px $wrong-color;
+            }
+        }
+        .ready-button {
+            bottom: -7rem;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 4rem;
+            &:hover{
+                box-shadow:inset 0 0 5px 45px $ascent-color, 0 0 15px 8px $ascent-color;
+            }
+        }
                               }
   .prize-chart-container{
     grid-area: prize;

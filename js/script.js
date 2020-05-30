@@ -1,10 +1,12 @@
 
 var progressStatus = 'bronze';
-var canRenderNextQuestion = true;
-var canRenderNextAnswer = true;
+var canRenderNextQuestion = false;
+var canRenderNextAnswer = false;
 const questionContainer = getElem('data-question-container');
 const nextQuestionButton = getElem('data-next-question-button');
 const nextAnswerButton = getElem('data-next-answer-button');
+const readyButton = getElem('data-ready-button');
+const quitButton = getElem('data-quit-button');
 const lifeLineList = getElem('data-lifeline-list');
 const silverMilestone = getElem('data-silver');
 const goldMilestone = getElem('data-gold');
@@ -23,7 +25,7 @@ const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
 const COLOR_CODES = {
   info: {
-    color: "yellow"
+    color: "gold"
   },
   warning: {
    color: "red",
@@ -64,12 +66,14 @@ let timerInterval = null;
 let gameWon = false;
 let gameStarted = false;
 let gameEnded = false;
+let gameQuit = false;
 var answerBox = null;
 var answerList= null;
 var answerListElems = null;
 var answerCounter = 0;
 var questionBank;
 var twoTimesTempAnswer = false;
+
 var disableLifeLineButton =  {
   fiftyFifty: false,
   google: false,
@@ -79,7 +83,10 @@ var disableLifeLineButton =  {
 
 var currentQuestionAnswer;
 var currentLevel = 0;
-
+quitButton.addEventListener('click', e => {
+    gameQuit = true;
+    gameLost();
+});
 bannerButton.addEventListener('click', e => {
   changeBannerState(banner, false);
   changeBannerState(currentBannerType, false);
@@ -115,12 +122,25 @@ lifeLineList.addEventListener('click', e=> {
   }
   disableLifeLineButton[selectedLifeLine] = true;
   targetLifeLine.classList.add('disabled');
-})
+});
+readyButton.addEventListener('click', e => {
+  if (gameStarted) {
+    return;
+  }
+  nextQuestionButton.classList.remove('hide');
+  nextAnswerButton.classList.remove('hide');
+  quitButton.classList.remove('hide');
+  readyButton.classList.add('hide');
+  gameStarted = true;
+  canRenderNextQuestion = true;
+});
 nextQuestionButton.addEventListener('click', e => {
   if (!canRenderNextQuestion) {
         return;
   }
   getNextQuestion();
+  canRenderNextQuestion = false;
+  canRenderNextAnswer = true;
 });
 nextAnswerButton.addEventListener('click', e => {
   if (!canRenderNextAnswer) {
@@ -133,7 +153,6 @@ nextAnswerButton.addEventListener('click', e => {
   answerCounter++;
   if (answerCounter == 4) {
     canRenderNextAnswer = false;
-    canRenderNextQuestion = false;
   }
 })
 
@@ -149,15 +168,24 @@ function initGame() {
   resetGameStates();
   resetBannerStates();
   fetchQuestion();
-  gameStarted = true;
 }
 function resetGameDesign() {
   resetPrizeList();
   resetLifeLine();
   resetQuestionContainer();
+  resetQuestionNavigationButtons();
+}
+function resetQuestionNavigationButtons() {
+  readyButton.classList.remove('hide');
+  nextQuestionButton.classList.add('hide');
+  nextAnswerButton.classList.add('hide');
+  quitButton.classList.add('hide');
 }
 function resetPrizeList() {
   const classLevel = getLevelClass();
+  if (currentLevel === 10) {
+    --currentLevel;
+  }
   prizeList[currentLevel + 1].classList.remove(classLevel);
   resetLimitMilestone();
 }
@@ -176,22 +204,25 @@ function resetLifeLine() {
     });
 }
 function resetQuestionContainer() {
-
+    clearQuestionsAndAnswers();
 }
 function getLevelClass() {
   const threshold = getPrizeThresholdInfo();
   return threshold['nextLevel'];
 }
 function getPrizeThresholdInfo() {
+  let prizeIndexArray = getPrizeThresholdArray();
+  prizeIndex = Math.max(...prizeIndexArray);
+  return prizeThreshold[prizeIndex];
+}
+function getPrizeThresholdArray() {
   let prizeIndexArray = [];
-  let prizeIndex;
   for (const index in prizeThreshold) {
     if (index <= currentLevel) {
         prizeIndexArray.push(index)
     }
   }
-  prizeIndex = Math.max(...prizeIndexArray);
-  return prizeThreshold[prizeIndex];
+  return prizeIndexArray;
 }
 function resetGameStates() {
   gameWon = false;
@@ -381,6 +412,8 @@ function checkAnswer(id) {
       if (currentLevel <= 9) {
         if (currentLevel === 9) {
             gameWin();
+            currentLevel++;
+            setPrizeThreshold(currentLevel);
             return;
         }
           canRenderNextQuestion = true;
@@ -445,10 +478,23 @@ function setCongratulationMessage() {
 }
 function setLostMessage() {
       const prize = getPrizeValue();
-      loserBanner.innerHTML = `Sorry! Wrong Answer <br> You win ${prize}`;
+      let msg = '';
+      if (!gameQuit) {
+        msg = 'Wrong Answer';
+      }
+      loserBanner.innerHTML = `Sorry! ${msg} <br> You win ${prize}`;
 }
 function getPrizeValue() {
+    let prizeIndexArray = getPrizeThresholdArray();
     let prizeIndex = getPrizeThresholdInfo()['index'];
+    if (!gameQuit && !gameWon) {
+      if (prizeIndexArray.length == 3) {
+            prizeIndex = prizeThreshold[prizeIndexArray[1]]['index'];
+      }
+      if (prizeIndexArray.length < 3) {
+        prizeIndex = prizeThreshold[prizeIndexArray[0]]['index'];
+      }
+    }
     prizeVal = prizeList[prizeIndex].innerText;
     return `Rs ${prizeVal}`;
 }
@@ -506,6 +552,13 @@ function getTwoAnswerToBeRemoved() {
  return rand;
 }
 function startTimer() {
+  console.log('timerInterval', timerInterval);
+  console.log('timePassed', timePassed);
+  console.log('timeLeft', timeLeft);
+/**
+  timePassed = 0;
+  let timeLeft = TIME_LIMIT;
+  let timerInterval = null; **/
   timerInterval = setInterval(() => {
     timePassed = timePassed +=1;
     timeLeft = TIME_LIMIT - timePassed;
@@ -527,8 +580,7 @@ function formatTimeLeft(time) {
 }
 function setRemainingPathColor(timeLeft) {
   const {warning, info } = COLOR_CODES;
-  console.log('timeLeft', timeLeft, ' warning', warning.threshold);
- if (timeLeft <= warning.threshold) {
+  if (timeLeft <= warning.threshold) {
     document
       .getElementById("base-timer-path-remaining")
       .classList.remove(info.color);
@@ -554,8 +606,18 @@ function setCircleDasharray() {
 }
 function onTImesUp() {
   clearInterval(timerInterval);
+
   setTimeout(() => {
+      resetTimer();
       timerContainer.classList.add('remove');
   }, 5000)
+}
+function resetTimer() {
+  timerInterval = null;
+  timePassed = 0;
+  timeLeft = TIME_LIMIT;
+    document.getElementById('base-timer-label').classList.remove('warning');
+    document.getElementById("base-timer-path-remaining")
+    .classList.remove('red');
 }
 initGame();

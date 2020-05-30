@@ -132,7 +132,8 @@
     grid-area: zoom;
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    position: relative; }
     .main-container .zoom-container .timer-container .base-timer {
       position: relative;
       height: 300px;
@@ -167,6 +168,37 @@
     .main-container .zoom-container .timer-container .base-timer__svg {
       /* Flips the svg and makes the animation to move left-to-right */
       transform: scaleX(-1); }
+    .main-container .zoom-container .ready-button,
+    .main-container .zoom-container .quit-button {
+      position: absolute;
+      text-align: center;
+      color: white;
+      background: gold;
+      font-weight: bolder;
+      cursor: pointer; }
+    .main-container .zoom-container .quit-button {
+      top: 0.1em;
+      right: 0.7em;
+      height: 4em;
+      width: 4em;
+      border-radius: 50%;
+      font-size: 2rem;
+      line-height: 3.3em;
+      background: black;
+      color: gold;
+      border: 9px solid gold; }
+      .main-container .zoom-container .quit-button:hover {
+        border-color: red;
+        color: white;
+        background: red;
+        box-shadow: inset 0 0 5px 45px red, 0 0 15px 8px red; }
+    .main-container .zoom-container .ready-button {
+      bottom: -7rem;
+      padding: 15px 40px;
+      border-radius: 10px;
+      font-size: 4rem; }
+      .main-container .zoom-container .ready-button:hover {
+        box-shadow: inset 0 0 5px 45px gold, 0 0 15px 8px gold; }
   .main-container .prize-chart-container {
     grid-area: prize; }
     .main-container .prize-chart-container .prize-chart-box {

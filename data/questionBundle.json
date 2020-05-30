@@ -2,102 +2,61 @@
  "bronze": [
 
    {
-   "question": "How many province does Nepal have?",
+   "question": "What are the areas due to which the present conflict between Nepal and India is taking place?",
    "answers": [{
-     "answerText": "4",
+     "answerText": "Lipudhura and Limpiyalekh",
      "status": "false"
      },
    {
-     "answerText": "5",
-     "status": "false"
+     "answerText": "Lipulekh and Limpiyadhura",
+     "status": "true"
      },
    {
-     "answerText": "6",
+     "answerText": "Limpiyadhura and Bardia",
      "status": "false"
      }, {
-       "answerText": "7",
-       "status": "true"
+       "answerText": "Kalapani and Limpudhura",
+       "status": "false"
        }]
    },
 
 
    {
-     "question": "What is the national animal of Nepal?",
+     "question": "What is the national animal of India?",
      "answers": [{
        "answerText": "Tiger",
-       "status": "false"
+       "status": "true"
        },
      {
        "answerText": "Cow",
-       "status": "true"
+       "status": "false"
        },
      {
        "answerText": "Lhophophorus",
        "status": "false"
        },
      {
-       "answerText": "Danfe",
+       "answerText": "Goat",
        "status": "false"
        }]
    },
 
    {
-     "question": "Who  has the highest number of followers in instagram?",
+     "question": "Which is the smallest country in the world?",
      "answers": [{
-       "answerText": "Selena Gomez",
-       "status": "false"
-       },
-     {
-       "answerText": "Beyonce",
-       "status": "false"
-       },
-     {
-       "answerText": "Cristiano Ronaldo",
+       "answerText": "Vatican City",
        "status": "true"
        },
      {
-       "answerText": "Justin Bieber",
-       "status": "false"
-       }]
-   },
-
-   {
-     "question": "Who is the worlds richest person according to Forbes?",
-     "answers": [{
-       "answerText": "Bill Gates",
+       "answerText": "Luxemborg",
        "status": "false"
        },
      {
-       "answerText": "Mukesh Ambani",
+       "answerText": "Israel",
        "status": "false"
        },
      {
-       "answerText": "Jeff Besos",
-       "status": "true"
-       },
-     {
-       "answerText": "Mark Zuckerberg",
-       "status": "false"
-       }]
-   },
-
-
-   {
-     "question": "What is your body's largest organ?",
-     "answers": [{
-       "answerText": "Lungs",
-       "status": "false"
-       },
-     {
-       "answerText": "Skin",
-       "status": "true"
-       },
-     {
-       "answerText": "Stomach",
-       "status": "false"
-       },
-     {
-       "answerText": "Large Intestine",
+       "answerText": "Nepal",
        "status": "false"
        }]
    },
@@ -118,6 +77,47 @@
        },
      {
        "answerText": "Jupiter",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "What is the full form of U.R.L?",
+     "answers": [{
+       "answerText": "Universal Resource Locator",
+       "status": "false"
+       },
+     {
+       "answerText": "Uniform Resource Locator",
+       "status": "true"
+       },
+     {
+       "answerText": "Union Resource Location",
+       "status": "false"
+       },
+     {
+       "answerText": "Unirform Resource Location",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Usain Bolt set a world record for a 100m race. What was his time?",
+     "answers": [{
+       "answerText": "9.50",
+       "status": "false"
+       },
+     {
+       "answerText": "9.55",
+       "status": "false"
+       },
+     {
+       "answerText": "9.58",
+       "status": "true"
+       },
+     {
+       "answerText": "9.68",
        "status": "false"
        }]
    },
