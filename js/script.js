@@ -170,7 +170,10 @@ function resetLimitMilestone() {
     }
 }
 function resetLifeLine() {
-
+    const lifelines = Array.from(getElem('data-lifeline-list').getElementsByTagName('li'));
+    lifelines.forEach((lifeline) => {
+      lifeline.classList.remove('disabled');
+    });
 }
 function resetQuestionContainer() {
 
