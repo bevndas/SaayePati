@@ -9,11 +9,33 @@
 <body>
   <div class="main-container">
     <div class="zoom-container">
+      <div class="timer-container remove" data-timer>
+        <div class="base-timer">
+          <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <g class="base-timer__circle">
+                  <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
+                  <path
+                            id="base-timer-path-remaining"
+                            stroke-dasharray="283"
+                            class="base-timer__path-remaining"
+                            d="
+                              M 50, 50
+                              m -45, 0
+                              a 45,45 0 1,0 90,0
+                              a 45,45 0 1,0 -90,0
+                            "></path>
+              </g>
+        </svg>
+        <span id="base-timer-label" class="base-timer__label">
+          00:20
+        </span>
+        </div>
+      </div>
     </div>
     <div class="prize-chart-container">
         <div class="prize-chart-box">
             <ul class="prize-list" data-prize-list>
-              <li data-id="10">10</li>
+              <li data-id="10">100</li>
               <li data-id="9">90</li>
               <li data-id="6">80</li>
               <line-break class="line-break" data-gold>
@@ -33,23 +55,24 @@
               <li data-id="2">20</li>
               <li data-id="1">10</li>
               <line-break class="line-break" data-bronze>
-                <span class="line-break-left"></span>
-                <span class="line-break-right"></span>
+                <span class="line-break-left milestone-limit"></span>
+                <span class="line-break-right milestone-limit"></span>
               </line-break>
               <li data-id="0">0</li>
             </ul>
         </div>
     </div>
-    <div class="question-container">
+    <div class="question-container" >
       <div class="question-navigation-container">
-        <div class="next-answer">
+        <div class="next-answer" data-next-answer-button>
           <span> >> </span>
         </div>
-        <div class="next-question">
+        <div class="next-question" data-next-question-button>
             <span>Next</span>
         </div>
       </div>
-        <div class="question-box">
+      <div class="question-section" data-question-container>
+        <div class="question-box" data-question>
           <p>The question will appear here?</p>
         </div>
         <div class="answer-box">
@@ -60,21 +83,52 @@
           <li><span>D.</span> <p>answer of d</p> </li>
           </ul>
         </div>
+      </div>
     </div>
     <div class="life-line-container">
         <div class="life-line-box">
-          <ul class="life-line-list">
-            <li class="fifty-fifty"><p> 50<span></span>50</p></li>
-            <li class="opt-google"><p> G </p></li>
-            <li class="poll"><p> Poll</p></li>
-            <li class="times-two"><p> x2 </p></li>
+          <ul class="life-line-list" data-lifeline-list>
+            <li class="fifty-fifty" data-id="fiftyFifty"> 50<span></span>50</li>
+            <li class="opt-google" data-id="google"> G </li>
+            <li class="poll" data-id="poll"> Poll</li>
+            <li class="times-two" data-id="timesTwo">x2 </li>
           </ul>
         </div>
     </div>
   </div>
-  <template id="question-answer-template">
+  <div class="welcome banner-container remove" data-welcome-banner>
+    <div class="title-box">
+      <h2>Ko <br>Banna <br>Chahancha <br><span class="emphasis">SaayaPatti?</span></h2>
+    </div>
+    <div class="banner-button" data-start-button>
+      Start
+  </div>
+</div>
+  <div class="congratulations banner-container" data-congratulation-banner>
+      <div class="confetti-container confetti">
+      </div>
+      <div class="confetti-container confetti">
+      </div>
+      <div class="confetti-container confetti">
+      </div>
+      <div class="confetti-container confetti">
+      </div>
+      <div class="confetti-container confetti">
+      </div>
+          Congratulations!
+          <div class="confetti-container confetti">
+          </div>
+          <div class="confetti-container confetti">
+          </div>
+          <div class="confetti-container confetti">
+          </div>
+          <div class="confetti-container confetti">
+          </div>
+          <div class="confetti-container confetti">
+          </div>
+  </div>
+  <div class="loser banner-container remove" data-lose-banner>
 
-
-  </template>
+  </div>
 </body>
 </html>

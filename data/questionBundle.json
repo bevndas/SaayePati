@@ -1,0 +1,214 @@
+{
+ "bronze": [
+
+   {
+   "question": "How many province does Nepal have?",
+   "answers": [{
+     "answerText": "4",
+     "status": "false"
+     },
+   {
+     "answerText": "5",
+     "status": "false"
+     },
+   {
+     "answerText": "6",
+     "status": "false"
+     }, {
+       "answerText": "7",
+       "status": "true"
+       }]
+   },
+
+
+   {
+     "question": "What is the national animal of Nepal?",
+     "answers": [{
+       "answerText": "Tiger",
+       "status": "false"
+       },
+     {
+       "answerText": "Cow",
+       "status": "true"
+       },
+     {
+       "answerText": "Lhophophorus",
+       "status": "false"
+       },
+     {
+       "answerText": "Danfe",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Who  has the highest number of followers in instagram?",
+     "answers": [{
+       "answerText": "Selena Gomez",
+       "status": "false"
+       },
+     {
+       "answerText": "Beyonce",
+       "status": "false"
+       },
+     {
+       "answerText": "Cristiano Ronaldo",
+       "status": "true"
+       },
+     {
+       "answerText": "Justin Bieber",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Who is the worlds richest person according to Forbes?",
+     "answers": [{
+       "answerText": "Bill Gates",
+       "status": "false"
+       },
+     {
+       "answerText": "Mukesh Ambani",
+       "status": "false"
+       },
+     {
+       "answerText": "Jeff Besos",
+       "status": "true"
+       },
+     {
+       "answerText": "Mark Zuckerberg",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "What is your body's largest organ?",
+     "answers": [{
+       "answerText": "Lungs",
+       "status": "false"
+       },
+     {
+       "answerText": "Skin",
+       "status": "true"
+       },
+     {
+       "answerText": "Stomach",
+       "status": "false"
+       },
+     {
+       "answerText": "Large Intestine",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Which planet is the hottest in the solar system?",
+     "answers": [{
+       "answerText": "Mars",
+       "status": "false"
+       },
+     {
+       "answerText": "Mercury",
+       "status": "false"
+       },
+     {
+       "answerText": "Venus",
+       "status": "true"
+       },
+     {
+       "answerText": "Jupiter",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Which European nation was said to invent hot dogs?",
+     "answers": [{
+       "answerText": "Germany",
+       "status": "true"
+       },
+     {
+       "answerText": "France",
+       "status": "false"
+       },
+     {
+       "answerText": "England",
+       "status": "false"
+       },
+     {
+       "answerText": "Italy",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "What is the full form of CNN?",
+     "answers": [{
+       "answerText": "Cable Network and News",
+       "status": "false"
+       },
+     {
+       "answerText": "Current News Network",
+       "status": "false"
+       },
+     {
+       "answerText": "Cable News Network",
+       "status": "true"
+       },
+     {
+       "answerText": "Common Network for News",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "From when was 'No Horn Policy' adopted in Kathmandu?",
+     "answers": [{
+       "answerText": "2073 B.S Baishak 1",
+       "status": "false"
+       },
+     {
+       "answerText": "2074 B.S Baishak 1",
+       "status": "true"
+       },
+     {
+       "answerText": "2073 B.S Jestha 1",
+       "status": "false"
+       },
+     {
+       "answerText": "2074 B.S Jestha 1",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Which is the first conservation area established in Nepal?",
+     "answers": [{
+       "answerText": "Annapurna Conservation Area",
+       "status": "true"
+       },
+     {
+       "answerText": "Gaurishankar Conservation Area",
+       "status": "false"
+       },
+     {
+       "answerText": "Kanchanjunga Conservation Area",
+       "status": "false"
+       },
+     {
+       "answerText": "Manasulu Conservation Area",
+       "status": "false"
+       }]
+   }
+
+
+
+
+
+
+
+  ]
+ }
