@@ -1,0 +1,214 @@
+{
+ "bronze": [
+   {
+   "question": "Who has the most number of followers in Instagram?",
+   "answers": [{
+     "answerText": "Selena Gomez",
+     "status": "false"
+     },
+   {
+     "answerText": "Cristiano Ronaldo",
+     "status": "true"
+     },
+   {
+     "answerText": "Messi",
+     "status": "false"
+     }, {
+       "answerText": "Beyonce",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "Who was the final ruler of Rana Regime in Nepal?",
+     "answers": [{
+       "answerText": "Judh Shamsher",
+       "status": "false"
+       },
+     {
+       "answerText": "Bam Bahadur Kunwar",
+       "status": "false"
+       },
+     {
+       "answerText": "Mohan Shamsher",
+       "status": "true"
+       },
+     {
+       "answerText": "Jung Bahadur Rana",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "What do the letters 'HB' on a pencil stand for?",
+     "answers": [{
+       "answerText": "How Bold",
+       "status": "false"
+       },
+     {
+       "answerText": "Hard Bound",
+       "status": "false"
+       },
+     {
+       "answerText": "Hard Black",
+       "status": "true"
+       },
+     {
+       "answerText": "Heavy Black",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Which is the world's largest freshwater lake by surface area?",
+     "answers": [{
+       "answerText": "Lake Baikal",
+       "status": "false"
+       },
+     {
+       "answerText": "Lake Nicaragua",
+       "status": "false"
+       },
+     {
+       "answerText": "Lake Superior",
+       "status": "true"
+       },
+     {
+       "answerText": "Lake Tanganyika",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "Who has the right to declare insurgency period in Nepal?",
+     "answers": [{
+       "answerText": "Defence Minister",
+       "status": "false"
+       },
+     {
+       "answerText": "Home Minister",
+       "status": "false"
+       },
+     {
+       "answerText": "President",
+       "status": "true"
+       },
+     {
+       "answerText": "Prime Minister",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Which country has the most fresh water?",
+     "answers": [{
+       "answerText": "Nepal",
+       "status": "false"
+       },
+     {
+       "answerText": "Brazil",
+       "status": "true"
+       },
+     {
+       "answerText": "Canada",
+       "status": "false"
+       },
+     {
+       "answerText": "Iceland",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "What is the space between windows called?",
+     "answers": [{
+       "answerText": "Interfenestration",
+       "status": "true"
+       },
+     {
+       "answerText": "Interwinspace",
+       "status": "false"
+       },
+     {
+       "answerText": "interfrastation",
+       "status": "false"
+       },
+     {
+       "answerText": "interstation",
+       "status": "false"
+       }]
+   },
+
+
+
+   {
+     "question": "What was the first animated film to be nominated for Best Picture at the Academy Awards?",
+     "answers": [{
+       "answerText": "Aladdin",
+       "status": "false"
+       },
+     {
+       "answerText": "Beauty and the Beast",
+       "status": "true"
+       },
+     {
+       "answerText": "The Lion King",
+       "status": "false"
+       },
+     {
+       "answerText": "The Jungle Book",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "How many languages are written from right to left?",
+     "answers": [{
+       "answerText": "3",
+       "status": "false"
+       },
+     {
+       "answerText": "12",
+       "status": "true"
+       },
+     {
+       "answerText": "20",
+       "status": "false"
+       },
+     {
+       "answerText": "4",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Which country has the oldest continously used national flag?",
+     "answers": [{
+       "answerText": "Finland",
+       "status": "false"
+       },
+     {
+       "answerText": "Iceland",
+       "status": "false"
+       },
+     {
+       "answerText": "Norway",
+       "status": "false"
+       },
+     {
+       "answerText": "Denmark",
+       "status": "true"
+       }]
+   }
+
+
+
+
+
+
+
+  ]
+ }

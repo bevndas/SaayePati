@@ -1,7 +1,24 @@
 
+var currentQuestionIndex = 0;
 var progressStatus = 'bronze';
 var canRenderNextQuestion = false;
 var canRenderNextAnswer = false;
+var answerBox = null;
+var answerList= null;
+var answerListElems = null;
+var answerCounter = 0;
+var questionBank;
+var twoTimesTempAnswer = false;
+var disableLifeLineButton =  {
+  fiftyFifty: false,
+  google: false,
+  poll: false,
+  timesTwo: false
+};
+var currentQuestionAnswer;
+var currentLevel = 0;
+
+
 const questionContainer = getElem('data-question-container');
 const nextQuestionButton = getElem('data-next-question-button');
 const nextAnswerButton = getElem('data-next-answer-button');
@@ -32,30 +49,37 @@ const COLOR_CODES = {
    threshold: WARNING_THRESHOLD
  }
 };
+
+
+
 let prizeThreshold = {
   0: {
     index: 0,
     reached: false,
-    level: "null",
+    previousLevel: 'bronze',
+    level: "bronze",
     nextLevel: "bronze"
   },
   4: {
     index: 4,
     reached: false,
+    previousLevel: 'bronze',
     level: "bronze",
     nextLevel: "silver"
   },
   7: {
     index: 7,
     reached: false,
+    previousLevel: 'bronze',
     level: "silver",
     nextLevel: "gold"
   },
   10: {
     index: 10,
     reached: false,
+    previousLevel: 'silver',
     level: "gold",
-    nextLevel: "null"
+    nextLevel: "gold"
   }
 }
 let currentBannerType;
@@ -67,34 +91,27 @@ let gameWon = false;
 let gameStarted = false;
 let gameEnded = false;
 let gameQuit = false;
-var answerBox = null;
-var answerList= null;
-var answerListElems = null;
-var answerCounter = 0;
-var questionBank;
-var twoTimesTempAnswer = false;
 
-var disableLifeLineButton =  {
-  fiftyFifty: false,
-  google: false,
-  poll: false,
-  timesTwo: false
-};
 
-var currentQuestionAnswer;
-var currentLevel = 0;
+/**  -- Event Listeners --  **/
+
+/** Quit the show by contestant  **/
 quitButton.addEventListener('click', e => {
     gameQuit = true;
     gameLost();
 });
+
+/** handle  start or return options  **/
 bannerButton.addEventListener('click', e => {
   changeBannerState(banner, false);
   changeBannerState(currentBannerType, false);
   if (currentBannerType !== welcomeBanner) {
+      currentQuestionIndex++;
       initGame();
   }
 });
 
+/** handle lifelines **/
 lifeLineList.addEventListener('click', e=> {
   let selectedLifeLine;
   let targetLifeLine =  e.target;
@@ -104,6 +121,57 @@ lifeLineList.addEventListener('click', e=> {
   if (disableLifeLineButton[selectedLifeLine]) {
     return;
   }
+  executeLifeLine(selectedLifeLine);
+  disableLifeLineButton[selectedLifeLine] = true;
+  toggleClass(targetLifeLine, 'disabled', true);
+});
+
+/** smooth transition to start the game  **/
+readyButton.addEventListener('click', e => {
+  if (gameStarted) {
+    return;
+  }
+  resetQuestionNavigationButtons(false);
+  gameStarted = true;
+  canRenderNextQuestion = true;
+});
+
+/**  show next question on click  **/
+nextQuestionButton.addEventListener('click', e => {
+  if (!canRenderNextQuestion) {
+        return;
+  }
+  getNextQuestion();
+  canRenderNextQuestion = false;
+  canRenderNextAnswer = true;
+});
+
+/**  show individual answer on click  **/
+nextAnswerButton.addEventListener('click', e => {
+  if (!canRenderNextAnswer) {
+    return;
+  }
+  if (!Boolean(answerBox)) {
+    renderAnswerBoxAndList(currentQuestionAndAnswers['answers']);
+  }
+  renderIndividualAnswer(answerCounter);
+  answerCounter++;
+  if (answerCounter == 4) {
+    canRenderNextAnswer = false;
+  }
+});
+
+/** toggle element class **/
+function toggleClass(elem, className, bool) {
+    if (bool) {
+      elem.classList.add(className);
+      return;
+    }
+    elem.classList.remove(className);
+}
+
+/** run the life line as selected **/
+function executeLifeLine(selectedLifeLine) {
   switch (selectedLifeLine) {
     case 'fiftyFifty':
       fiftyFiftyLogic();
@@ -120,101 +188,91 @@ lifeLineList.addEventListener('click', e=> {
     default:
       console.log('Error on selecting lifeline');
   }
-  disableLifeLineButton[selectedLifeLine] = true;
-  targetLifeLine.classList.add('disabled');
-});
-readyButton.addEventListener('click', e => {
-  if (gameStarted) {
-    return;
-  }
-  nextQuestionButton.classList.remove('hide');
-  nextAnswerButton.classList.remove('hide');
-  quitButton.classList.remove('hide');
-  readyButton.classList.add('hide');
-  gameStarted = true;
-  canRenderNextQuestion = true;
-});
-nextQuestionButton.addEventListener('click', e => {
-  if (!canRenderNextQuestion) {
-        return;
-  }
-  getNextQuestion();
-  canRenderNextQuestion = false;
-  canRenderNextAnswer = true;
-});
-nextAnswerButton.addEventListener('click', e => {
-  if (!canRenderNextAnswer) {
-    return;
-  }
-  if (!Boolean(answerBox)) {
-    renderAnswerBoxAndList(currentQuestionAndAnswers['answers']);
-  }
-  renderIndividualAnswer(answerCounter);
-  answerCounter++;
-  if (answerCounter == 4) {
-    canRenderNextAnswer = false;
-  }
-})
+}
 
+/**  fetch the question from API **/
 function fetchQuestion() {
-  fetch('./data/questionBundle.json')
+  fetch(`./data/question${currentQuestionIndex}.json`)
   .then(res => res.json())
   .then(questions => {
   questionBank = questions;
   })
 }
+
+/**  start the game **/
 function initGame() {
   resetGameDesign();
   resetGameStates();
   resetBannerStates();
   fetchQuestion();
 }
+
+/**  re- render game design **/
 function resetGameDesign() {
   resetPrizeList();
   resetLifeLine();
   resetQuestionContainer();
-  resetQuestionNavigationButtons();
+  resetQuestionNavigationButtons(true);
 }
-function resetQuestionNavigationButtons() {
-  readyButton.classList.remove('hide');
-  nextQuestionButton.classList.add('hide');
-  nextAnswerButton.classList.add('hide');
-  quitButton.classList.add('hide');
+
+/** re-render buttons //
+ if bool is true it adds the class and vice versa
+ bool is set to false for begining reseting when game starts
+ bool is set to true for reseting when game restarts **/
+function resetQuestionNavigationButtons(bool) {
+  toggleClass(nextQuestionButton, 'hide' , bool);
+  toggleClass(nextAnswerButton, 'hide', bool);
+  toggleClass(quitButton, 'hide', bool);
+  toggleClass(readyButton, 'hide', !bool);
 }
+
+/** reset the prizelist design on restart  **/
 function resetPrizeList() {
   const classLevel = getLevelClass();
-  if (currentLevel === 10) {
+  if (currentLevel == 10) {
     --currentLevel;
   }
-  prizeList[currentLevel + 1].classList.remove(classLevel);
+  toggleClass( prizeList[currentLevel + 1], classLevel, false);
   resetLimitMilestone();
 }
+
+/** resetting the milestone bar in prize list **/
 function resetLimitMilestone() {
     const silverLimit = getElem('data-silver').getElementsByTagName('span');
     const goldLimit = getElem('data-gold').getElementsByTagName('span');
     for(let i = 0;i < 2; i++) {
-      silverLimit[i].classList.remove('milestone-limit');
-      goldLimit[i].classList.remove('milestone-limit');
+      toggleClass(silverLimit[i], 'milestone-limit', false);
+      toggleClass(goldLimit[i], 'milestone-limit', false);
     }
 }
+
+/** reseting the selected lifeline css  **/
 function resetLifeLine() {
     const lifelines = Array.from(getElem('data-lifeline-list').getElementsByTagName('li'));
     lifelines.forEach((lifeline) => {
-      lifeline.classList.remove('disabled');
+      toggleClass(lifeline, 'disabled', false);
     });
 }
+
+/** reseting the question container on restart  **/
 function resetQuestionContainer() {
     clearQuestionsAndAnswers();
 }
+
+/** get the level the class (bronze, silver, gold) according to the current level  **/
 function getLevelClass() {
   const threshold = getPrizeThresholdInfo();
   return threshold['nextLevel'];
 }
+
+/**  get the threshold details for manipulating the prize **/
 function getPrizeThresholdInfo() {
   let prizeIndexArray = getPrizeThresholdArray();
   prizeIndex = Math.max(...prizeIndexArray);
   return prizeThreshold[prizeIndex];
 }
+
+/** get  the threshold indexes **/
 function getPrizeThresholdArray() {
   let prizeIndexArray = [];
   for (const index in prizeThreshold) {
@@ -224,6 +282,17 @@ function getPrizeThresholdArray() {
   }
   return prizeIndexArray;
 }
+function getPrizeThresholdCategoryIndex() {
+  const prizeIndexes = [0,4,7,10];
+  const maxPrizeIndex = Math.max(...getPrizeThresholdArray());
+  console.log('max Prize index', maxPrizeIndex);
+  const indexOfMaxPrizeIndex = prizeIndexes.indexOf(maxPrizeIndex);
+  if ( indexOfMaxPrizeIndex !== -1 &&  (indexOfMaxPrizeIndex < (prizeIndexes.length - 1))) {
+    return prizeIndexes[indexOfMaxPrizeIndex + 1];
+  }
+}
+
+/** reseting game counters on restart  **/
 function resetGameStates() {
   gameWon = false;
   gameStarted = false;
@@ -234,60 +303,80 @@ function resetGameStates() {
   questionBank = null;
   currentLevel = 0;
   twoTimesTempAnswer = false;
-  disableLifeLineButton =  {
-    fiftyFifty: false,
-    google: false,
-    poll: false,
-    timesTwo: false
-  };
+  resetingLifeLineButtons();
+  resetingPrizeThreshold();
+}
+
+/** resetting prize threshold **/
+function resetingPrizeThreshold() {
   prizeThreshold = {
     0: {
       index: 0,
       reached: false,
-      level: "null",
+      previousLevel: 'bronze',
+      level: "bronze",
       nextLevel: "bronze"
     },
     4: {
       index: 4,
       reached: false,
+      previousLevel: 'bronze',
       level: "bronze",
       nextLevel: "silver"
     },
     7: {
       index: 7,
       reached: false,
+        previousLevel: 'bronze',
       level: "silver",
       nextLevel: "gold"
     },
     10: {
       index: 10,
       reached: false,
+      previousLevel: 'silver',
       level: "gold",
-      nextLevel: "null"
+      nextLevel: "gold"
     }
   };
 }
+
+/** reactivating the disabled lifelines **/
+function resetingLifeLineButtons() {
+  disableLifeLineButton =  {
+    fiftyFifty: false,
+    google: false,
+    poll: false,
+    timesTwo: false
+  };
+}
+
+/**  rendering the button design and text in banner **/
 function setBannerButtonStates() {
   bannerButton.innerText = gameStarted ? 'Return': 'Enter';
   if  (gameStarted && !gameWon) {
-        bannerButton.classList.add('lost-button');
+        toggleClass(bannerButton, 'lost-button', true);
         return;
   }
-  bannerButton.classList.remove('lost-button');
+  toggleClass(bannerButton, 'lost-button', false);
 }
+
+/**  rendering the banner **/
 function resetBannerStates() {
       resetBanner();
       showBanner(welcomeBanner);
 }
+
+/**  show or hide the banner **/
 function changeBannerState(bannerType, type) {
   if (type) {
-    bannerType.classList.remove('remove');
+    toggleClass(bannerType, 'remove', false);
     return;
   }
-  bannerType.classList.add('remove');
+   toggleClass(bannerType, 'remove', true);
 }
 
-
+/** creating the question box container and render it  **/
 function renderQuestion(question) {
         const questionBox = document.createElement('div');
         questionBox.classList.add('question-box');
@@ -296,10 +385,14 @@ function renderQuestion(question) {
         questionBox.appendChild(pTag);
         questionContainer.appendChild(questionBox);
 }
+
+/** rendering individual answer on button click  **/
 function renderIndividualAnswer(counter) {
     const individualAnswer = answerListElems[counter];
-    individualAnswer.classList.remove('hide');
+    toggleClass(individualAnswer, 'hide', false);
 }
+
+/**  get next question on button click **/
 function getNextQuestion() {
     clearQuestionsAndAnswers();
     resetStates();
@@ -307,10 +400,14 @@ function getNextQuestion() {
     currentQuestionAndAnswers = getCurrentQuestionAnswer();
     renderQuestion(currentQuestionAndAnswers['question']);
 }
+
+/** re-render prize list based on level update  **/
 function updatePrizeList() {
   updateMilestoneLimit();
   updatePrizeActive();
 }
+
+/** render the milestone achieved **/
 function updateMilestoneLimit() {
   if (currentLevel == 4 || currentLevel == 7) {
     let spanElems;
@@ -321,12 +418,31 @@ function updateMilestoneLimit() {
       spanElems = goldMilestone.children;
     }
    for (let i = 0;i < spanElems.length; i++) {
-     spanElems[i].classList.add('milestone-limit');
+     toggleClass(spanElems[i], 'milestone-limit', true);
    }
    }
 }
+
+/** render the amount of pize won  **/
 function updatePrizeActive() {
   const prizeActiveIndex = currentLevel + 1;
+  const maxThresholdIndex = getPrizeThresholdCategoryIndex();
+  const previousActiveState = prizeThreshold[maxThresholdIndex]['previousLevel'];
+  const currentActiveState = prizeThreshold[maxThresholdIndex]['level']
+  const nextActiveState = prizeThreshold[maxThresholdIndex]['nextLevel'];
+  console.log('currentLve', prizeActiveIndex);
+  console.log('next', nextActiveState);
+  console.log('current', currentActiveState);
+  console.log('prev', previousActiveState);
+  if (prizeActiveIndex == 5 || prizeActiveIndex == 8)  {
+    toggleClass(prizeList[prizeActiveIndex], currentActiveState, true);
+    toggleClass(prizeList[prizeActiveIndex-1], previousActiveState, false);
+    return;
+  }
+  toggleClass(prizeList[prizeActiveIndex], currentActiveState, true);
+  toggleClass(prizeList[prizeActiveIndex-1], currentActiveState, false);
+
+  /**
   if (prizeActiveIndex >= 1  && prizeActiveIndex < 5) {
     prizeList[prizeActiveIndex].classList.add('bronze');
     if (prizeActiveIndex !== 1) {
@@ -351,7 +467,10 @@ function updatePrizeActive() {
       prizeList[prizeActiveIndex - 1].classList.remove('gold');
     }
   }
+  **/
 }
+
+/** rendering the answers in list  **/
 function renderAnswerBoxAndList(answers) {
   answerBox = document.createElement('div');
   answerList = document.createElement('ul');
@@ -381,22 +500,32 @@ function renderAnswerBoxAndList(answers) {
   answerBox.appendChild(answerList);
   questionContainer.appendChild(answerBox);
 }
+
+/** clearing the questions and answer on restart **/
 function clearQuestionsAndAnswers() {
     while (questionContainer.firstChild) {
         questionContainer.removeChild(questionContainer.firstChild);
     }
 }
+
+/**  reseting question answer logic states **/
 function resetStates() {
   answerBox = null;
   canRenderNextAnswer = true;
   answerCounter = 0;
 }
+
+/** get the current question **/
 function getCurrentQuestionAnswer() {
   return questionBank[progressStatus][currentLevel];
 }
+
+/** get element based on query selector**/
 function getElem(data) {
   return document.querySelector(`[${data}]`);
 }
+
+/** check whether the selected answer is correct**/
 function checkAnswer(id) {
     const allAnswers = currentQuestionAndAnswers['answers'];
     let ansCorrect = false;
@@ -426,11 +555,14 @@ function checkAnswer(id) {
     }
 
 }
+
+/**  counter the miletone has been reached or not **/
 function setPrizeThreshold(level) {
   if (level == 0 || level == 4 || level == 7 || level == 10) {
           prizeThreshold[level].reached = true;
   }
 }
+/** game win logic **/
 function gameWin() {
   gameWon = true;
   canRenderNextQuestion = false;
@@ -438,20 +570,27 @@ function gameWin() {
     showCongratulationBanner();
   }, 4000) ;
 }
+
+/**  game lose logic **/
 function gameLost() {
   gameWon = false;
   setTimeout(() => {
     showLostBanner();
   }, 4000) ;
 }
+
+/** show banner according to their type  **/
 function showCongratulationBanner() {
   setCongratulationMessage();
   showBanner(congratulationBanner);
 }
+/**  show banner when a contestant gives the wrong answer **/
 function showLostBanner() {
   setLostMessage();
   showBanner(loserBanner);
 }
+
+/** show the message when contestant has won the optimum prize  **/
 function setCongratulationMessage() {
   const prize = getPrizeValue();
   congratulationBanner.innerHTML = `
@@ -476,6 +615,7 @@ function setCongratulationMessage() {
               <div class="confetti-container confetti">
               </div>`;
 }
+/** setting the lost message whenver the contestant  gives wrong answer or quits **/
 function setLostMessage() {
       const prize = getPrizeValue();
       let msg = '';
@@ -484,6 +624,8 @@ function setLostMessage() {
       }
       loserBanner.innerHTML = `Sorry! ${msg} <br> You win ${prize}`;
 }
+
+/** get the prize amount baased on milestone achieved  **/
 function getPrizeValue() {
     let prizeIndexArray = getPrizeThresholdArray();
     let prizeIndex = getPrizeThresholdInfo()['index'];
@@ -498,21 +640,28 @@ function getPrizeValue() {
     prizeVal = prizeList[prizeIndex].innerText;
     return `Rs ${prizeVal}`;
 }
+/** showing the welcome banner in the screen **/
 function showWelcomeBanner() {
   showBanner(welcomeBanner);
 }
+
+/** render the banner  **/
 function showBanner(bannerType) {
   changeBannerState(banner, true);
   changeBannerState(bannerType, true);
   currentBannerType = bannerType;
   setBannerButtonStates();
 }
+
+/**  reseting the banner to default sstate  **/
 function resetBanner() {
   changeBannerState(banner, false);
   changeBannerState(welcomeBanner,false);
   changeBannerState(congratulationBanner, false);
   changeBannerState(loserBanner, false);
 }
+
+/** adding class to render the wrong and right answers **/
 function setAnswerStatus(status, id) {
   if (status == 'true') {
       answerListElems[id].classList.add('correct');
@@ -520,6 +669,8 @@ function setAnswerStatus(status, id) {
   }
   answerListElems[id].classList.add('incorrect');
 }
+
+/** hide two answers   **/
 function fiftyFiftyLogic() {
   const ansToBeRemoved = getTwoAnswerToBeRemoved();
   for (let i = 0; i < 2;i++) {
@@ -528,17 +679,25 @@ function fiftyFiftyLogic() {
   answer.classList.add('hide');
 }
 }
+
+/** show timer when google is selected  **/
 function googleLogic() {
   timerContainer.classList.remove('remove');
   startTimer();
 }
+
+/**  show timer when poll is selected  **/
 function pollLogic() {
   timerContainer.classList.remove('remove');
   startTimer();
 }
+
+/** allow the user to choose two answers  **/
 function timesTwoLogic() {
   twoTimesTempAnswer = true;
 }
+
+/** remove two ansers when fifty fitfty is selected  **/
 function getTwoAnswerToBeRemoved() {
   const ansToBeExcluded = currentQuestionAndAnswers['answers'].findIndex(ansObj => ansObj['status'] === "true");
      let rand = [];
@@ -551,15 +710,10 @@ function getTwoAnswerToBeRemoved() {
  }
  return rand;
 }
+
+/**  starting and showing the timer **/
 function startTimer() {
-  console.log('timerInterval', timerInterval);
-  console.log('timePassed', timePassed);
-  console.log('timeLeft', timeLeft);
-/**
-  timePassed = 0;
-  let timeLeft = TIME_LIMIT;
-  let timerInterval = null; **/
-  timerInterval = setInterval(() => {
+    timerInterval = setInterval(() => {
     timePassed = timePassed +=1;
     timeLeft = TIME_LIMIT - timePassed;
     timeDisplay.innerHTML = formatTimeLeft(timeLeft);
@@ -570,6 +724,8 @@ function startTimer() {
     }
   }, 1000);
 }
+
+/** setting the format of time to be shown  **/
 function formatTimeLeft(time) {
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
@@ -578,6 +734,8 @@ function formatTimeLeft(time) {
   }
   return `0${minutes}:${seconds}`;
 }
+
+/**  changing the color of timer based on time remaining  **/
 function setRemainingPathColor(timeLeft) {
   const {warning, info } = COLOR_CODES;
   if (timeLeft <= warning.threshold) {
@@ -591,11 +749,13 @@ function setRemainingPathColor(timeLeft) {
   }
 }
 
+/** calculating the remaining time **/
 function calculateTimeFraction() {
   const rawTimeFraction = timeLeft / TIME_LIMIT;
   return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
 }
 
+/** manipulating the timer circle  **/
 function setCircleDasharray() {
   const circleDasharray = `${(
     calculateTimeFraction() * FULL_DASH_ARRAY
@@ -604,6 +764,8 @@ function setCircleDasharray() {
     .getElementById("base-timer-path-remaining")
     .setAttribute("stroke-dasharray", circleDasharray);
 }
+
+/** clearning the timer whnen times up and reseting css  **/
 function onTImesUp() {
   clearInterval(timerInterval);
 
@@ -612,6 +774,8 @@ function onTImesUp() {
       timerContainer.classList.add('remove');
   }, 5000)
 }
+
+/** reseting the timer states after timer is cleared **/
 function resetTimer() {
   timerInterval = null;
   timePassed = 0;
@@ -620,4 +784,6 @@ function resetTimer() {
     document.getElementById("base-timer-path-remaining")
     .classList.remove('red');
 }
+
+/** game start point **/
 initGame();

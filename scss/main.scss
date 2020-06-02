@@ -298,16 +298,18 @@ $bronze-color: #cd7f32;
       height: 100%;
       .question-box {
         grid-area: question-box;
+        display: flex;
+        justify-content: center;
+        align-items:center;
         width: 95%;
         min-width: 95%;
         margin: 5px auto;
         min-height: 100px;
         border-radius: 20px;
         border: 1px solid $ascent-color;
-        padding: 10px 5px;
+        padding: 10px 10px;
           p {
             font-size: 1.5rem;
-            line-height: 2.7em;
           }
       }
       .answer-box {
@@ -427,18 +429,14 @@ $bronze-color: #cd7f32;
 .incorrect {
   background: $wrong-color;
   border: 1px solid $wrong-color!important;
-  box-shadow:inset 0 0 5px 45px $wrong-color, 0 0 15px 8px $wrong-color;
-  &:hover {
-      box-shadow:inset 0 0 5px 45px $wrong-color, 0 0 15px 8px $wrong-color!important;
-  }
+  box-shadow:inset 0 0 5px 45px $wrong-color, 0 0 15px 3px $wrong-color;
+  pointer-events: none;
 }
 .correct {
   background: $correct-color;
   border: 1px solid $correct-color!important;
-  box-shadow:inset 0 0 5px 45px $correct-color, 0 0 15px 8px $correct-color;
-  &:hover {
-      box-shadow:inset 0 0 5px 45px $correct-color, 0 0 15px 8px $correct-color!important;
-  }
+  box-shadow:inset 0 0 5px 45px $correct-color, 0 0 15px 3px $correct-color;
+  pointer-events: none;
 }
 .highlight-selected{
   transform:scale(1.05)!important;
