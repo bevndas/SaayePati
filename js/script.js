@@ -37,9 +37,9 @@ const congratulationBanner = getElem('data-congratulation');
 const loserBanner = getElem('data-loser');
 const bannerButton = getElem('data-banner-button');
 const answerOptions = ['A.', 'B.', 'C.', 'D.'];
-const TIME_LIMIT = 20;
+const TIME_LIMIT = 15;
 const FULL_DASH_ARRAY = 283;
-const WARNING_THRESHOLD = 10;
+const WARNING_THRESHOLD = 7;
 const COLOR_CODES = {
   info: {
     color: "gold"
@@ -661,8 +661,7 @@ function googleLogic() {
 
 /**  show timer when poll is selected  **/
 function pollLogic() {
-  toggleClass(timerContainer, 'remove', false);
-  startTimer();
+
 }
 
 /** allow the user to choose two answers  **/
