@@ -285,7 +285,6 @@ function getPrizeThresholdArray() {
 function getPrizeThresholdCategoryIndex() {
   const prizeIndexes = [0,4,7,10];
   const maxPrizeIndex = Math.max(...getPrizeThresholdArray());
-  console.log('max Prize index', maxPrizeIndex);
   const indexOfMaxPrizeIndex = prizeIndexes.indexOf(maxPrizeIndex);
   if ( indexOfMaxPrizeIndex !== -1 &&  (indexOfMaxPrizeIndex < (prizeIndexes.length - 1))) {
     return prizeIndexes[indexOfMaxPrizeIndex + 1];
@@ -429,11 +428,6 @@ function updatePrizeActive() {
   const maxThresholdIndex = getPrizeThresholdCategoryIndex();
   const previousActiveState = prizeThreshold[maxThresholdIndex]['previousLevel'];
   const currentActiveState = prizeThreshold[maxThresholdIndex]['level']
-  const nextActiveState = prizeThreshold[maxThresholdIndex]['nextLevel'];
-  console.log('currentLve', prizeActiveIndex);
-  console.log('next', nextActiveState);
-  console.log('current', currentActiveState);
-  console.log('prev', previousActiveState);
   if (prizeActiveIndex == 5 || prizeActiveIndex == 8)  {
     toggleClass(prizeList[prizeActiveIndex], currentActiveState, true);
     toggleClass(prizeList[prizeActiveIndex-1], previousActiveState, false);
@@ -441,41 +435,14 @@ function updatePrizeActive() {
   }
   toggleClass(prizeList[prizeActiveIndex], currentActiveState, true);
   toggleClass(prizeList[prizeActiveIndex-1], currentActiveState, false);
-
-  /**
-  if (prizeActiveIndex >= 1  && prizeActiveIndex < 5) {
-    prizeList[prizeActiveIndex].classList.add('bronze');
-    if (prizeActiveIndex !== 1) {
-      prizeList[prizeActiveIndex - 1].classList.remove('bronze');
-    }
-  }
-  if (prizeActiveIndex >= 5 && prizeActiveIndex < 8) {
-    prizeList[prizeActiveIndex].classList.add('silver');
-    if (prizeActiveIndex == 5) {
-      prizeList[prizeActiveIndex - 1].classList.remove('bronze');
-    }
-    if (prizeActiveIndex !== 5) {
-      prizeList[prizeActiveIndex - 1].classList.remove('silver');
-    }
-  }
-  if (prizeActiveIndex >= 8 ) {
-    prizeList[prizeActiveIndex].classList.add('gold');
-    if (prizeActiveIndex == 8) {
-      prizeList[prizeActiveIndex - 1].classList.remove('silver');
-    }
-    if (prizeActiveIndex !== 8) {
-      prizeList[prizeActiveIndex - 1].classList.remove('gold');
-    }
-  }
-  **/
 }
 
 /** rendering the answers in list  **/
 function renderAnswerBoxAndList(answers) {
   answerBox = document.createElement('div');
   answerList = document.createElement('ul');
-  answerBox.classList.add('answer-box');
-  answerList.classList.add('answer-list');
+  toggleClass(answerBox, 'answer-box', true);
+  toggleClass(answerList, 'answer-list', true);
   answerList.setAttribute('id', 'answer-list');
   answers.forEach((ansObj, i) => {
   const answer = document.createElement('li');
@@ -484,21 +451,27 @@ function renderAnswerBoxAndList(answers) {
   answer.innerText = ansObj['answerText'];
   answer.dataset.id = i;
   answer.addEventListener('click', e => {
-      const id = e.target.dataset.id;
-      if (twoTimesTempAnswer) {
-          e.target.classList.add('temp-select');
-          twoTimesTempAnswer = false;
-          return;
-      }
-     checkAnswer(id);
+      setAnswerEventListener(e);
   });
     answer.appendChild(answerOpt);
-    answer.classList.add('hide');
+    toggleClass(answer, 'hide', true);
     answerList.appendChild(answer);
   });
   answerListElems = answerList.getElementsByTagName('li');
   answerBox.appendChild(answerList);
   questionContainer.appendChild(answerBox);
+}
+
+
+/** setting event listener for each answer **/
+function setAnswerEventListener(evt) {
+  const id = evt.target.dataset.id;
+  if (twoTimesTempAnswer) {
+      toggleClass(evt, 'temp-select', true);
+      twoTimesTempAnswer = false;
+      return;
+  }
+ checkAnswer(id);
 }
 
 /** clearing the questions and answer on restart **/
@@ -541,8 +514,6 @@ function checkAnswer(id) {
       if (currentLevel <= 9) {
         if (currentLevel === 9) {
             gameWin();
-            currentLevel++;
-            setPrizeThreshold(currentLevel);
             return;
         }
           canRenderNextQuestion = true;
@@ -564,6 +535,8 @@ function setPrizeThreshold(level) {
 }
 /** game win logic **/
 function gameWin() {
+  currentLevel++;
+  setPrizeThreshold(currentLevel);
   gameWon = true;
   canRenderNextQuestion = false;
   setTimeout(() => {
@@ -664,10 +637,10 @@ function resetBanner() {
 /** adding class to render the wrong and right answers **/
 function setAnswerStatus(status, id) {
   if (status == 'true') {
-      answerListElems[id].classList.add('correct');
+      toggleClass(answerListElems[id], 'correct', true);
       return;
   }
-  answerListElems[id].classList.add('incorrect');
+    toggleClass(answerListElems[id], 'incorrect', true);
 }
 
 /** hide two answers   **/
@@ -676,19 +649,19 @@ function fiftyFiftyLogic() {
   for (let i = 0; i < 2;i++) {
   let index = ansToBeRemoved[i];
   const answer = answerListElems[index];
-  answer.classList.add('hide');
+  toggleClass(answer, 'hide', true);
 }
 }
 
 /** show timer when google is selected  **/
 function googleLogic() {
-  timerContainer.classList.remove('remove');
+  toggleClass(timerContainer, 'remove', false);
   startTimer();
 }
 
 /**  show timer when poll is selected  **/
 function pollLogic() {
-  timerContainer.classList.remove('remove');
+  toggleClass(timerContainer, 'remove', false);
   startTimer();
 }
 
@@ -771,7 +744,7 @@ function onTImesUp() {
 
   setTimeout(() => {
       resetTimer();
-      timerContainer.classList.add('remove');
+      toggleClass(timerContainer, 'remove', true);
   }, 5000)
 }
 
