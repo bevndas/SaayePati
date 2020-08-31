@@ -17,6 +17,7 @@ var disableLifeLineButton =  {
 };
 var currentQuestionAnswer;
 var currentLevel = 0;
+var tempAns = 0;
 
 
 const questionContainer = getElem('data-question-container');
@@ -36,6 +37,7 @@ const welcomeBanner = getElem('data-welcome');
 const congratulationBanner = getElem('data-congratulation');
 const loserBanner = getElem('data-loser');
 const bannerButton = getElem('data-banner-button');
+
 const answerOptions = ['A.', 'B.', 'C.', 'D.'];
 const TIME_LIMIT = 15;
 const FULL_DASH_ARRAY = 283;
@@ -83,13 +85,11 @@ let prizeThreshold = {
   }
 }
 let currentBannerType;
-let remainingPathColor = COLOR_CODES.info.color;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 let gameWon = false;
 let gameStarted = false;
-let gameEnded = false;
 let gameQuit = false;
 
 
@@ -98,6 +98,7 @@ let gameQuit = false;
 /** Quit the show by contestant  **/
 quitButton.addEventListener('click', e => {
     gameQuit = true;
+    resetStates();
     gameLost();
 });
 
@@ -467,8 +468,9 @@ function renderAnswerBoxAndList(answers) {
 function setAnswerEventListener(evt) {
   const id = evt.target.dataset.id;
   if (twoTimesTempAnswer) {
-      toggleClass(evt, 'temp-select', true);
+      toggleClass(evt.target, 'temp-select', true);
       twoTimesTempAnswer = false;
+      tempAns = id;
       return;
   }
  checkAnswer(id);
@@ -509,6 +511,16 @@ function checkAnswer(id) {
         ansCorrect = (status == 'true');
       }
       setAnswerStatus(allAnswers[i]['status'], i);
+    }
+    if (!ansCorrect) {
+      for (let i = 0; i < allAnswers.length; i++) {
+        if (tempAns == i)
+        {
+          const status = allAnswers[tempAns]['status'];
+          ansCorrect = (status == 'true');
+        }
+        setAnswerStatus(allAnswers[i]['status'], i);
+      }
     }
     if (ansCorrect) {
       if (currentLevel <= 9) {
