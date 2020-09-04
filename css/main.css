@@ -19,7 +19,27 @@
   .banner-container .welcome {
     font-size: 1.5rem;
     color: gold;
-    text-align: center; }
+    text-align: center;
+    /* Chrome, Safari, Edge, Opera */
+    /* Firefox */ }
+    .banner-container .welcome input {
+      width: 30px;
+      height: 30px;
+      color: gold;
+      font-size: 1em;
+      text-align: center;
+      vertical-align: middle;
+      background: black;
+      border: 0px;
+      border-bottom: 1px solid gold; }
+      .banner-container .welcome input:focus {
+        outline: none; }
+    .banner-container .welcome input::-webkit-outer-spin-button,
+    .banner-container .welcome input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
+    .banner-container .welcome input[type=number] {
+      -moz-appearance: textfield; }
     .banner-container .welcome span.emphasis {
       font-size: 6rem; }
   .banner-container .congratulations {
@@ -127,7 +147,7 @@
   grid-gap: 5px;
   grid-template-columns: 1em 4fr 2fr 1em;
   grid-template-rows: 1em 40vh 10em calc(60vh - 12em - 20px) 1em;
-  grid-template-areas: ". . . ." ". zoom prize ." ". question prize ." ". question lifeline . " ". . . ."; }
+  grid-template-areas: ". . . ." ". zoom prize ." ". question prize ." ". question lifeline . " ". . . ."; }
   .main-container .zoom-container {
     grid-area: zoom;
     display: flex;
@@ -334,6 +354,7 @@
         flex-direction: row;
         flex-wrap: wrap; }
         .main-container .life-line-container .life-line-box .life-line-list li {
+          position: relative;
           display: inline-block;
           cursor: pointer;
           font-size: 2em;
@@ -358,7 +379,7 @@
               height: 2px;
               background: gold; }
           .main-container .life-line-container .life-line-box .life-line-list li.opt-google, .main-container .life-line-container .life-line-box .life-line-list li.times-two {
-            font-size: 4em; }
+            font-size: 3em; }
           .main-container .life-line-container .life-line-box .life-line-list li:hover {
             transform: scale(1.1);
             color: white;
@@ -366,6 +387,14 @@
             box-shadow: inset 0 0 5px 45px gold, 0 0 15px 8px gold; }
             .main-container .life-line-container .life-line-box .life-line-list li:hover.fifty-fifty span {
               background: white; }
+          .main-container .life-line-container .life-line-box .life-line-list li figure {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px; }
+            .main-container .life-line-container .life-line-box .life-line-list li figure img {
+              max-width: 100%; }
   .main-container .prize-chart-container,
   .main-container .life-line-container {
     border: 5px solid gold;

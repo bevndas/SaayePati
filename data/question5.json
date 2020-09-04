@@ -1,0 +1,214 @@
+{
+  "bronze": [
+    {
+      "question": "One of the following person is running for the Precidential Election 2020?",
+      "answers": [{
+        "answerText": "Barak Obama",
+        "status": "false"
+      },
+        {
+          "answerText": "George Floyd",
+          "status": "false"
+        },
+        {
+          "answerText": "J.K Angstein",
+          "status": "false"
+        }, {
+          "answerText": "Joe Biden",
+          "status": "true"
+        }]
+    },
+
+
+    {
+      "question": "What is the formula for Moment?",
+      "answers": [{
+        "answerText": "Mass x Velocity",
+        "status": "true"
+      },
+        {
+          "answerText": "Mass x Time",
+          "status": "false"
+        },
+        {
+          "answerText": "Velocity x Time",
+          "status": "false"
+        },
+        {
+          "answerText": "Force x Time",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "What do the letters 'HP' on electronic devices stand for?",
+      "answers": [{
+        "answerText": "High Performance",
+        "status": "false"
+      },
+        {
+          "answerText": "Heavy Performer",
+          "status": "false"
+        },
+        {
+          "answerText": "Hewlett Packard",
+          "status": "true"
+        },
+        {
+          "answerText": "Hewley Performer",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "In which district does Cho Rolpa Lake lie in?",
+      "answers": [{
+        "answerText": "Rolpa",
+        "status": "false"
+      },
+        {
+          "answerText": "Dolpa",
+          "status": "false"
+        },
+        {
+          "answerText": "Dolkha",
+          "status": "true"
+        },
+        {
+          "answerText": "Nawalparasi",
+          "status": "false"
+        }]
+    },
+
+
+    {
+      "question": "Where was the first oil well struck in the world?",
+      "answers": [{
+        "answerText": "Kuwait",
+        "status": "false"
+      },
+        {
+          "answerText": "USA",
+          "status": "true"
+        },
+        {
+          "answerText": "UAE",
+          "status": "false"
+        },
+        {
+          "answerText": "Saudi Arabia",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "Which crop is sown on the largest area in India?",
+      "answers": [{
+        "answerText": "Rice",
+        "status": "true"
+      },
+        {
+          "answerText": "Wheat",
+          "status": "false"
+        },
+        {
+          "answerText": "Maize",
+          "status": "false"
+        },
+        {
+          "answerText": "Sugarcane",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "Entomology is the science that studies...",
+      "answers": [{
+        "answerText": "Behaviour of human beings",
+        "status": "false"
+      },
+        {
+          "answerText": "Insects",
+          "status": "true"
+        },
+        {
+          "answerText": "The origin of scientific terms",
+          "status": "false"
+        },
+        {
+          "answerText": "Formation of Rocks",
+          "status": "false"
+        }]
+    },
+
+
+
+    {
+      "question": "Indonesia's national game is..",
+      "answers": [{
+        "answerText": "Table Tennis",
+        "status": "false"
+      },
+        {
+          "answerText": "Badminton",
+          "status": "true"
+        },
+        {
+          "answerText": "Pole Vault",
+          "status": "false"
+        },
+        {
+          "answerText": "Snooker",
+          "status": "false"
+        }]
+    },
+
+
+    {
+      "question": "Which country below is not one of the members of the UN security council?",
+      "answers": [{
+        "answerText": "Germany",
+        "status": "true"
+      },
+        {
+          "answerText": "France",
+          "status": "false"
+        },
+        {
+          "answerText": "China",
+          "status": "false"
+        },
+        {
+          "answerText": "USA",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "Who is the first Asian Winner of Nobel Prize?",
+      "answers": [{
+        "answerText": "A.C.V Raman",
+        "status": "false"
+      },
+        {
+          "answerText": "Rajiv Gandhi",
+          "status": "false"
+        },
+        {
+          "answerText": "Rabindranath Tagore",
+          "status": "true"
+        },
+        {
+          "answerText": "Mother Teresa",
+          "status": "false"
+        }]
+    }
+
+
+
+
+
+
+
+  ]
+}

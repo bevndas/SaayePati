@@ -30,6 +30,31 @@ $bronze-color: #cd7f32;
     font-size: 1.5rem;
     color: $ascent-color;
       text-align: center;
+    input {
+      width: 30px;
+      height: 30px;
+      color: gold;
+      font-size: 1em;
+      text-align: center;
+      vertical-align: middle;
+      background: black;
+      border: 0px;
+      border-bottom: 1px solid gold;
+        &:focus {
+          outline: none;
+        }
+    }
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
       span.emphasis {
           font-size: 6rem;
       }
@@ -368,6 +393,7 @@ $bronze-color: #cd7f32;
         flex-direction: row;
         flex-wrap: wrap;
         li {
+          position: relative;
           display: inline-block;
           cursor: pointer;
           font-size: 2em;
@@ -397,7 +423,7 @@ $bronze-color: #cd7f32;
             }
             &.opt-google,
             &.times-two {
-              font-size: 4em;
+              font-size: 3em;
             }
             &:hover {
               transform: scale(1.1);
@@ -412,6 +438,16 @@ $bronze-color: #cd7f32;
 
             }
             }
+          figure {
+            position: absolute;
+            top: 50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            img {
+              max-width: 100%;
+            }
+          }
         }
 
       }

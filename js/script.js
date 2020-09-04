@@ -18,6 +18,12 @@ var disableLifeLineButton =  {
 var currentQuestionAnswer;
 var currentLevel = 0;
 var tempAns = 0;
+var clockSound = new Audio('./assets/sounds/clockSound.mp3');
+var mainSound = new Audio('./assets/sounds/questionSound.mp3');
+var nextQuestionSound = new Audio('./assets/sounds/nextQuestion.mp3');
+var wrongAnswerSound = new Audio('./assets/sounds/optionLockSound.mp3');
+var suspenseSound = new Audio('./assets/sounds/suspense.mp3');
+var suspenseSoundInterval;
 
 
 const questionContainer = getElem('data-question-container');
@@ -37,6 +43,7 @@ const welcomeBanner = getElem('data-welcome');
 const congratulationBanner = getElem('data-congratulation');
 const loserBanner = getElem('data-loser');
 const bannerButton = getElem('data-banner-button');
+let questionSetNumber = getElem('data-question-set-number');
 
 const answerOptions = ['A.', 'B.', 'C.', 'D.'];
 const TIME_LIMIT = 15;
@@ -97,6 +104,7 @@ let gameQuit = false;
 
 /** Quit the show by contestant  **/
 quitButton.addEventListener('click', e => {
+    wrongAnswerSound.play();
     gameQuit = true;
     resetStates();
     gameLost();
@@ -132,6 +140,8 @@ readyButton.addEventListener('click', e => {
   if (gameStarted) {
     return;
   }
+  fetchQuestion();
+  mainSound.play();
   resetQuestionNavigationButtons(false);
   gameStarted = true;
   canRenderNextQuestion = true;
@@ -142,6 +152,12 @@ nextQuestionButton.addEventListener('click', e => {
   if (!canRenderNextQuestion) {
         return;
   }
+  nextQuestionSound.play();
+  suspenseSound.play();
+  suspenseSoundInterval =  setInterval(() => {
+        suspenseSound.play();
+    }, 50000);
+  clearInterval()
   getNextQuestion();
   canRenderNextQuestion = false;
   canRenderNextAnswer = true;
@@ -193,7 +209,10 @@ function executeLifeLine(selectedLifeLine) {
 
 /**  fetch the question from API **/
 function fetchQuestion() {
-  fetch(`./data/question${currentQuestionIndex}.json`)
+    if (questionSetNumber.value <= 0) {
+        questionSetNumber.value = 1;
+    }
+  fetch(`./data/question${--questionSetNumber.value}.json`)
   .then(res => res.json())
   .then(questions => {
   questionBank = questions;
@@ -205,7 +224,6 @@ function initGame() {
   resetGameDesign();
   resetGameStates();
   resetBannerStates();
-  fetchQuestion();
 }
 
 /**  re- render game design **/
@@ -532,8 +550,14 @@ function checkAnswer(id) {
           currentLevel++;
           setPrizeThreshold();
       }
+      setTimeout(() => {
+            suspenseSound.pause();
+            clearInterval(suspenseSoundInterval);
+            mainSound.play();
+      }, 2000);
     }
     if (!ansCorrect) {
+      wrongAnswerSound.play();
       gameLost();
     }
 
@@ -673,7 +697,8 @@ function googleLogic() {
 
 /**  show timer when poll is selected  **/
 function pollLogic() {
-
+    toggleClass(timerContainer, 'remove', false);
+    startTimer();
 }
 
 /** allow the user to choose two answers  **/
@@ -697,6 +722,7 @@ function getTwoAnswerToBeRemoved() {
 
 /**  starting and showing the timer **/
 function startTimer() {
+    clockSound.play();
     timerInterval = setInterval(() => {
     timePassed = timePassed +=1;
     timeLeft = TIME_LIMIT - timePassed;
