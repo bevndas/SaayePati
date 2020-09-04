@@ -1,0 +1,214 @@
+{
+  "bronze": [
+    {
+      "question": "Which city is known as the land of the Maple Leaf?",
+      "answers": [{
+        "answerText": "USA",
+        "status": "false"
+      },
+        {
+          "answerText": "Switzerland",
+          "status": "false"
+        },
+        {
+          "answerText": "South Africa",
+          "status": "false"
+        }, {
+          "answerText": "Canada",
+          "status": "true"
+        }]
+    },
+
+
+    {
+      "question": "What is the strongest muscle in your body?",
+      "answers": [{
+        "answerText": "Tongue",
+        "status": "true"
+      },
+        {
+          "answerText": "Biceps",
+          "status": "false"
+        },
+        {
+          "answerText": "Triceps",
+          "status": "false"
+        },
+        {
+          "answerText": "Pectorial Muscles",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "How many stars are there on the American Flag?",
+      "answers": [{
+        "answerText": "51",
+        "status": "false"
+      },
+        {
+          "answerText": "52",
+          "status": "false"
+        },
+        {
+          "answerText": "53",
+          "status": "false"
+        },
+        {
+          "answerText": "50",
+          "status": "true"
+        }]
+    },
+
+    {
+      "question": "The country who's National Anthem has only music but no word is..",
+      "answers": [{
+        "answerText": "Pakistan",
+        "status": "false"
+      },
+        {
+          "answerText": "Bahrain",
+          "status": "true"
+        },
+        {
+          "answerText": "Bhutan",
+          "status": "false"
+        },
+        {
+          "answerText": "Peru",
+          "status": "false"
+        }]
+    },
+
+
+    {
+      "question": "The permanent secretariat of the SAARC is located at:?",
+      "answers": [{
+        "answerText": "Kathmandu",
+        "status": "true"
+      },
+        {
+          "answerText": "India",
+          "status": "false"
+        },
+        {
+          "answerText": "Colombo",
+          "status": "false"
+        },
+        {
+          "answerText": "Dhaka",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "What is the fullname of the current Indian Prime Minister?",
+      "answers": [{
+        "answerText": "Narendra Singh Modi",
+        "status": "false"
+      },
+        {
+          "answerText": "Narendra Bhakta Modi",
+          "status": "false"
+        },
+        {
+          "answerText": "Narandra Damodardas Modi",
+          "status": "true"
+        },
+        {
+          "answerText": "Narendra Jeshnavi Modi",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "What does VOIP stand for?",
+      "answers": [{
+        "answerText": "Voice Over Infrared Port",
+        "status": "false"
+      },
+        {
+          "answerText": "Voice Over Internet Protocol",
+          "status": "true"
+        },
+        {
+          "answerText": "Video Over Internet Protocol",
+          "status": "false"
+        },
+        {
+          "answerText": "Vsync On Internet Performance",
+          "status": "false"
+        }]
+    },
+
+
+
+    {
+      "question": "What name is given to baby whale?",
+      "answers": [{
+        "answerText": "Baby",
+        "status": "false"
+      },
+        {
+          "answerText": "Halfling",
+          "status": "false"
+        },
+        {
+          "answerText": "Calf",
+          "status": "true"
+        },
+        {
+          "answerText": "Kin",
+          "status": "false"
+        }]
+    },
+
+
+    {
+      "question": "How many countries make the United Kingdom?",
+      "answers": [{
+        "answerText": "2",
+        "status": "false"
+      },
+        {
+          "answerText": "4",
+          "status": "true"
+        },
+        {
+          "answerText": "3",
+          "status": "false"
+        },
+        {
+          "answerText": "6",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "'Island of Cloves' is the nickname of :?",
+      "answers": [{
+        "answerText": "Sweden",
+        "status": "false"
+      },
+        {
+          "answerText": "Madagascar",
+          "status": "true"
+        },
+        {
+          "answerText": "Cuba",
+          "status": "false"
+        },
+        {
+          "answerText": "Iraq",
+          "status": "false"
+        }]
+    }
+
+
+
+
+
+
+
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "bronze": [
+    {
+      "question": "Who was the former Managing Director of NEA?",
+      "answers": [{
+        "answerText": "Kulman Ghising",
+        "status": "false"
+      },
+        {
+          "answerText": "Girish Khatiwada",
+          "status": "false"
+        },
+        {
+          "answerText": "Mukunda Raj Kafle",
+          "status": "false"
+        }, {
+          "answerText": "Mukesh Raj Kafle",
+          "status": "true"
+        }]
+    },
+
+
+    {
+      "question": "Who is the founder of FORD Company?",
+      "answers": [{
+        "answerText": "Henry Ford",
+        "status": "true"
+      },
+        {
+          "answerText": "George Ford",
+          "status": "false"
+        },
+        {
+          "answerText": "Lucas Ford",
+          "status": "false"
+        },
+        {
+          "answerText": "Henry The Second Ford",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "Who is the most subscribed individual Youtuber?",
+      "answers": [{
+        "answerText": "Mr Beast",
+        "status": "false"
+      },
+        {
+          "answerText": "Mark Rober",
+          "status": "false"
+        },
+        {
+          "answerText": "SMZ",
+          "status": "false"
+        },
+        {
+          "answerText": "Pewdiepie",
+          "status": "true"
+        }]
+    },
+
+    {
+      "question": "Which one is the upcoming James Bond Movie?",
+      "answers": [{
+        "answerText": "Skyfall",
+        "status": "false"
+      },
+        {
+          "answerText": "No time to Die",
+          "status": "true"
+        },
+        {
+          "answerText": "Die Another Day",
+          "status": "false"
+        },
+        {
+          "answerText": "GoldenEye",
+          "status": "false"
+        }]
+    },
+
+
+    {
+      "question": "What is the time taken for light to reach the earth from the sun?",
+      "answers": [{
+        "answerText": "520 seconds",
+        "status": "false"
+      },
+        {
+          "answerText": "499.72 seconds",
+          "status": "true"
+        },
+        {
+          "answerText": "472 seconds",
+          "status": "false"
+        },
+        {
+          "answerText": "20 seconds",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "The year in which America dropped the Atom Bomb in Hiroshima?",
+      "answers": [{
+        "answerText": "1945 August 6",
+        "status": "true"
+      },
+        {
+          "answerText": "1946 August 5",
+          "status": "false"
+        },
+        {
+          "answerText": "1945 August 5",
+          "status": "false"
+        },
+        {
+          "answerText": "1946 August 6",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "Opthalmology is the science that studies...",
+      "answers": [{
+        "answerText": "Bones",
+        "status": "false"
+      },
+        {
+          "answerText": "Eyes",
+          "status": "true"
+        },
+        {
+          "answerText": "Ear",
+          "status": "false"
+        },
+        {
+          "answerText": "Mouth",
+          "status": "false"
+        }]
+    },
+
+
+
+    {
+      "question": "What is the name of Nepal's first satellite?",
+      "answers": [{
+        "answerText": "Antarishk",
+        "status": "false"
+      },
+        {
+          "answerText": "Bird NPL",
+          "status": "true"
+        },
+        {
+          "answerText": "Brahmand-1",
+          "status": "false"
+        },
+        {
+          "answerText": "NepaliSatellite-001",
+          "status": "false"
+        }]
+    },
+
+
+    {
+      "question": "Which company manufactured CD for the first time?",
+      "answers": [{
+        "answerText": "Phillips",
+        "status": "true"
+      },
+        {
+          "answerText": "Sony",
+          "status": "false"
+        },
+        {
+          "answerText": "Samsung",
+          "status": "false"
+        },
+        {
+          "answerText": "Apple",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "Who is known as Ashukavi in Nepali Literature?",
+      "answers": [{
+        "answerText": "Bhanu Bhakta Acharya",
+        "status": "false"
+      },
+        {
+          "answerText": "Laxmi Prasad Devkota",
+          "status": "false"
+        },
+        {
+          "answerText": "Shambhu Prasad Dhungel",
+          "status": "true"
+        },
+        {
+          "answerText": "Hari Krishna Dangol",
+          "status": "false"
+        }]
+    }
+
+
+
+
+
+
+
+  ]
+}
