@@ -10,7 +10,7 @@ const imagemin = require('gulp-imagemin');
 const cache = require('gulp-cache');
 const del = require('del');
 
-function useref() {
+function userref() {
     return gulp.src('src/.html')
         .pipe(useref())
         .pipe(gulpIf('.js', uglify()))
@@ -54,4 +54,4 @@ var browserSync = require('browser-sync').create();
 
 exports.style = style;
 exports.watch = watch;
-exports.build = series(cleanDist, style, useref, images);
+exports.build = series(cleanDist, style, userref, images);
