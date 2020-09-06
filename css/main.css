@@ -222,11 +222,19 @@
   .main-container .prize-chart-container {
     grid-area: prize; }
     .main-container .prize-chart-container .prize-chart-box {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100%;
       text-align: center; }
+      .main-container .prize-chart-container .prize-chart-box figure {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; }
+        .main-container .prize-chart-container .prize-chart-box figure img {
+          max-width: 100%; }
       .main-container .prize-chart-container .prize-chart-box .prize-list {
         list-style-type: none; }
         .main-container .prize-chart-container .prize-chart-box .prize-list li {
@@ -295,6 +303,7 @@
     .main-container .question-container .question-section {
       height: 100%; }
       .main-container .question-container .question-section .question-box {
+        position: relative;
         grid-area: question-box;
         display: flex;
         justify-content: center;
@@ -304,10 +313,21 @@
         margin: 5px auto;
         min-height: 100px;
         border-radius: 20px;
-        border: 1px solid gold;
-        padding: 10px 10px; }
+        border: 2px solid gold;
+        padding: 10px 10px;
+        overflow: hidden; }
+        .main-container .question-container .question-section .question-box figure {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          z-index: 1;
+          width: 100%;
+          height: 100%; }
+          .main-container .question-container .question-section .question-box figure img {
+            max-width: 100%; }
         .main-container .question-container .question-section .question-box p {
-          font-size: 1.5rem; }
+          font-size: 1.5rem;
+          z-index: 2; }
       .main-container .question-container .question-section .answer-box {
         grid-area: answer-box;
         width: 95%;
@@ -327,13 +347,23 @@
             width: calc(50% - 10px);
             display: block;
             padding: 30px 5px;
-            border: 1px solid gold;
+            border: 2px solid gold;
             border-radius: 20px;
             margin: 5px;
             font-size: 1.6rem;
             transform: scale(1);
             transition: transform 200ms ease-in-out;
-            cursor: pointer; }
+            cursor: pointer;
+            overflow: hidden; }
+            .main-container .question-container .question-section .answer-box .answer-list li figure {
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              z-index: -1;
+              width: 100%;
+              height: 100%; }
+              .main-container .question-container .question-section .answer-box .answer-list li figure img {
+                max-width: 100%; }
             .main-container .question-container .question-section .answer-box .answer-list li:hover {
               transform: scale(1.05);
               font-weight: bolder;
@@ -343,10 +373,18 @@
               position: absolute;
               left: 20px; }
   .main-container .life-line-container {
+    position: relative;
     grid-area: lifeline;
     display: flex;
     justify-content: center;
     align-items: center; }
+    .main-container .life-line-container > figure {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; }
+      .main-container .life-line-container > figure img {
+        max-width: 100%; }
     .main-container .life-line-container .life-line-box {
       width: 100%; }
       .main-container .life-line-container .life-line-box .life-line-list {
@@ -365,7 +403,6 @@
           border-radius: 50%;
           padding: 20px;
           margin: 5px 10px;
-          background: black;
           text-align: center;
           width: 100px;
           height: 100px;

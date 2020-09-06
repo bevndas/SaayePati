@@ -398,6 +398,11 @@ function changeBannerState(bannerType, type) {
 function renderQuestion(question) {
         const questionBox = document.createElement('div');
         questionBox.classList.add('question-box');
+        const figure = document.createElement('figure');
+        const img = document.createElement('img');
+        img.src = './assets/image/kbcanswerbg.png';
+        figure.appendChild(img);
+        questionBox.appendChild(figure);
         const pTag = document.createElement('p');
         pTag.innerText = question;
         questionBox.appendChild(pTag);
@@ -465,13 +470,18 @@ function renderAnswerBoxAndList(answers) {
   answerList.setAttribute('id', 'answer-list');
   answers.forEach((ansObj, i) => {
   const answer = document.createElement('li');
+  const figure = document.createElement('figure');
+  const imageElem = document.createElement('img');
   const answerOpt = document.createElement('span');
+  imageElem.src = './assets/image/kbcanswerbg.png';
+  figure.appendChild(imageElem);
   answerOpt.innerText = answerOptions[i];
   answer.innerText = ansObj['answerText'];
   answer.dataset.id = i;
   answer.addEventListener('click', e => {
       setAnswerEventListener(e);
   });
+    answer.appendChild(figure);
     answer.appendChild(answerOpt);
     toggleClass(answer, 'hide', true);
     answerList.appendChild(answer);
