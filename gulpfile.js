@@ -33,8 +33,9 @@ function style() {
         .pipe(gulp.dest('dist'))
         .pipe(browserSync.stream());
 }
-function cleanDist() {
+function cleanDist(done) {
     del.sync('dist')
+    done();
 }
 
 function watch() {
