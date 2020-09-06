@@ -19,10 +19,6 @@ function userref() {
 }
 function jsUglify() {
     return gulp.src('js/script.js')
-        .pipe(babel({
-            presets: ['@babel/preset-env']
-        }))
-        .pipe(uglify())
         .pipe(gulp.dest('dist/js'))
 }
 function images() {
