@@ -1,0 +1,214 @@
+{
+  "bronze": [
+    {
+      "question": "What is the full form of PUBG?",
+      "answers": [{
+        "answerText": "Player United Battle Group",
+        "status": "false"
+      },
+        {
+          "answerText": "Player Universal Battle Ground",
+          "status": "false"
+        },
+        {
+          "answerText": "Player Unknown Battle Ground",
+          "status": "true"
+        }, {
+          "answerText": "Player United Battle Ground",
+          "status": "false"
+        }]
+    },
+
+
+    {
+      "question": "How many  bones do we have in our human body?",
+      "answers": [{
+        "answerText": "209",
+        "status": "false"
+      },
+        {
+          "answerText": "201",
+          "status": "false"
+        },
+        {
+          "answerText": "203",
+          "status": "false"
+        },
+        {
+          "answerText": "206",
+          "status": "true"
+        }]
+    },
+
+    {
+      "question": "Which was the first feature-length computer animated movie?",
+      "answers": [{
+        "answerText": "Aladin",
+        "status": "false"
+      },
+        {
+          "answerText": "Toy Story",
+          "status": "true"
+        },
+        {
+          "answerText": "Beauty and the Beast",
+          "status": "false"
+        },
+        {
+          "answerText": "Mulan",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "Who is known as the Father of Modern Computing?",
+      "answers": [{
+        "answerText": "Alan Mathison Turing",
+        "status": "true"
+      },
+        {
+          "answerText": "Charles Babbage",
+          "status": "false"
+        },
+        {
+          "answerText": "J.J Thompsans",
+          "status": "false"
+        },
+        {
+          "answerText": "Alan Rick",
+          "status": "false"
+        }]
+    },
+
+
+    {
+      "question": "Messi was linked to which club during the 20/21 Transfer Campaign?",
+      "answers": [{
+        "answerText": "Manchester City",
+        "status": "true"
+      },
+        {
+          "answerText": "Manchester United",
+          "status": "false"
+        },
+        {
+          "answerText": "Chelsea",
+          "status": "false"
+        },
+        {
+          "answerText": "Arsenal",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "What is the largest district of Nepal?",
+      "answers": [{
+        "answerText": "Dolpa",
+        "status": "true"
+      },
+        {
+          "answerText": "Humla",
+          "status": "false"
+        },
+        {
+          "answerText": "Manang",
+          "status": "false"
+        },
+        {
+          "answerText": "Mustang",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "What is the first National Park of Nepal?",
+      "answers": [{
+        "answerText": "Phewa National Park",
+        "status": "false"
+      },
+        {
+          "answerText": "Chitwan National Park",
+          "status": "true"
+        },
+        {
+          "answerText": "Illam National Park",
+          "status": "false"
+        },
+        {
+          "answerText": "Shivapuri National Park",
+          "status": "false"
+        }]
+    },
+
+
+
+    {
+      "question": "Which is the tallest temple in Kathmandu?",
+      "answers": [{
+        "answerText": "Krishna Mandir",
+        "status": "false"
+      },
+        {
+          "answerText": "Taleju Mandir",
+          "status": "true"
+        },
+        {
+          "answerText": "Manakamana Mandir",
+          "status": "true"
+        },
+        {
+          "answerText": "Pashupatinath Mandir",
+          "status": "false"
+        }]
+    },
+
+
+    {
+      "question": "Guarantee to an exporter that the importer of his goods will pay immediately for the goods ordered by him, is known as?",
+      "answers": [{
+        "answerText": "Letter of Credit (L/C)",
+        "status": "false"
+      },
+        {
+          "answerText": "Laissezfaire",
+          "status": "true"
+        },
+        {
+          "answerText": "Inflation",
+          "status": "false"
+        },
+        {
+          "answerText": "None of the above",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "First Afghan War took place in:",
+      "answers": [{
+        "answerText": "1839",
+        "status": "true"
+      },
+        {
+          "answerText": "1843",
+          "status": "false"
+        },
+        {
+          "answerText": "1833",
+          "status": "false"
+        },
+        {
+          "answerText": "1848",
+          "status": "false"
+        }]
+    }
+
+
+
+
+
+
+
+  ]
+}
