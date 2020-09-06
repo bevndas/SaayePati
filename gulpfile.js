@@ -26,13 +26,20 @@ function jsUglify() {
         .pipe(gulp.dest('dist/js'))
 }
 function images() {
-    return gulp.src('src/images/**/*.+(png|jpg|gif|svg)')
+    return gulp.src('assets/image/heart.png')
         .pipe(cache(imagemin({
             interlaced: true
         })))
         .pipe(gulp.dest('dist/assets/image'))
 }
-
+function data() {
+    return gulp.src('data/*.json')
+        .pipe(gulp.dest('dist/data'))
+}
+function sound() {
+    return gulp.src('assets/sounds/*.mp3')
+        .pipe(gulp.dest('dist/assets/sounds'))
+}
 function style() {
     return gulp.src('scss/main.scss')
         .pipe(sass().on('error', sass.logError))
@@ -63,4 +70,4 @@ var browserSync = require('browser-sync').create();
 
 exports.style = style;
 exports.watch = watch;
-exports.build = series(cleanDist, style, userref,jsUglify, images);
+exports.build = series(cleanDist, style, userref,jsUglify,data, sound, images);
