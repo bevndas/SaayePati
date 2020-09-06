@@ -11,10 +11,10 @@ const cache = require('gulp-cache');
 const del = require('del');
 
 function userref() {
-    return gulp.src('src/.html')
+    return gulp.src('index.html')
         .pipe(useref())
-        .pipe(gulpIf('.js', uglify()))
-        .pipe(gulpIf('*.css', cssnano()))
+        .pipe(gulpIf('js/script.js', uglify()))
+        .pipe(gulpIf('css/main.css', cssnano()))
         .pipe(gulp.dest('dist'))
 }
 function images() {
