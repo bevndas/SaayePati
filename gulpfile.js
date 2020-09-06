@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+const {series} = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 const useref = require('gulp-useref');
@@ -9,20 +10,20 @@ const imagemin = require('gulp-imagemin');
 const cache = require('gulp-cache');
 const del = require('del');
 
-gulp.task('useref', () => {
+function useref() {
     return gulp.src('src/.html')
-.pipe(useref())
+        .pipe(useref())
         .pipe(gulpIf('.js', uglify()))
-.pipe(gulpIf('*.css', cssnano()))
-.pipe(gulp.dest('dist'))
-});
-gulp.task('images', () => {
-    return gulp.src('src/images/**/*.+(png|jpg|gif|svg)')
-.pipe(cache(imagemin({
-        interlaced: true
-    })))
+        .pipe(gulpIf('*.css', cssnano()))
         .pipe(gulp.dest('dist'))
-});
+}
+function images() {
+    return gulp.src('src/images/**/*.+(png|jpg|gif|svg)')
+        .pipe(cache(imagemin({
+            interlaced: true
+        })))
+        .pipe(gulp.dest('dist'))
+}
 
 function style() {
     return gulp.src('scss/main.scss')
@@ -32,11 +33,10 @@ function style() {
         .pipe(gulp.dest('dist'))
         .pipe(browserSync.stream());
 }
-gulp.task('clean:dist', (done) => {
+function cleanDist() {
     del.sync('dist')
-    done();
-});
-gulp.task('build', gulp.series('clean:dist', 'sass', 'useref', 'images'));
+}
+
 function watch() {
     browserSync.init({
         server: {
@@ -54,3 +54,4 @@ var browserSync = require('browser-sync').create();
 
 exports.style = style;
 exports.watch = watch;
+exports.build = series(cleanDist, style, useref, images);
