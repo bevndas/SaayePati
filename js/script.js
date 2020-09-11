@@ -137,6 +137,7 @@ lifeLineList.addEventListener('click', e=> {
 
 /** smooth transition to start the game  **/
 readyButton.addEventListener('click', e => {
+    console.log('click')
   if (gameStarted) {
     return;
   }
@@ -474,14 +475,14 @@ function renderAnswerBoxAndList(answers) {
   const imageElem = document.createElement('img');
   const answerOpt = document.createElement('span');
   imageElem.src = './assets/image/kbcanswerbg.png';
-  figure.appendChild(imageElem);
+ // figure.appendChild(imageElem);
   answerOpt.innerText = answerOptions[i];
   answer.innerText = ansObj['answerText'];
   answer.dataset.id = i;
   answer.addEventListener('click', e => {
       setAnswerEventListener(e);
   });
-    answer.appendChild(figure);
+
     answer.appendChild(answerOpt);
     toggleClass(answer, 'hide', true);
     answerList.appendChild(answer);
@@ -494,7 +495,9 @@ function renderAnswerBoxAndList(answers) {
 
 /** setting event listener for each answer **/
 function setAnswerEventListener(evt) {
+    console.log('evt', evt);
   const id = evt.target.dataset.id;
+  console.log('id', id);
   if (twoTimesTempAnswer) {
       toggleClass(evt.target, 'temp-select', true);
       twoTimesTempAnswer = false;
@@ -554,6 +557,9 @@ function checkAnswer(id) {
       if (currentLevel <= 9) {
         if (currentLevel === 9) {
             gameWin();
+            suspenseSound.pause();
+            clearInterval(suspenseSoundInterval);
+            mainSound.play();
             return;
         }
           canRenderNextQuestion = true;

@@ -8,111 +8,116 @@
 </head>
 <body>
   <div class="main-container">
-    <div class="zoom-container">
-      <div class="timer-container remove" data-timer>
-        <div class="base-timer">
-          <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <div class="bg-container">
+
+    </div>
+      <div class="zoom-container">
+        <div class="timer-container remove" data-timer>
+          <div class="base-timer">
+            <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <g class="base-timer__circle">
-                  <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
-                  <path
-                            id="base-timer-path-remaining"
-                            stroke-dasharray="283"
-                            class="base-timer__path-remaining"
-                            d="
+                <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
+                <path
+                        id="base-timer-path-remaining"
+                        stroke-dasharray="283"
+                        class="base-timer__path-remaining"
+                        d="
                               M 50, 50
                               m -45, 0
                               a 45,45 0 1,0 90,0
                               a 45,45 0 1,0 -90,0
                             "></path>
               </g>
-        </svg>
-        <span id="base-timer-label" class="base-timer__label">
+            </svg>
+            <span id="base-timer-label" class="base-timer__label">
           00:15
         </span>
+          </div>
+        </div>
+
+        <div class="quit-button" data-quit-button>
+          Quit
         </div>
       </div>
-      <div class="ready-button" data-ready-button>
-        Ready
-      </div>
-      <div class="quit-button" data-quit-button>
-          Quit
-      </div>
-    </div>
-    <div class="prize-chart-container">
+      <div class="prize-chart-container">
         <div class="prize-chart-box">
           <figure>
             <img src="./assets/image/kbcOption.png" alt="">
           </figure>
-            <ul class="prize-list" data-prize-list>
-              <li data-id="10">100</li>
-              <li data-id="9">80</li>
-              <li data-id="6">65</li>
-              <line-break class="line-break" data-gold>
-                <span class="line-break-left"></span>
-                <span class="line-break-right"></span>
-              </line-break>
+          <ul class="prize-list" data-prize-list>
+            <li data-id="10">100</li>
+            <li data-id="9">80</li>
+            <li data-id="6">65</li>
+            <line-break class="line-break" data-gold>
+              <span class="line-break-left"></span>
+              <span class="line-break-right"></span>
+            </line-break>
 
-              <li data-id="7">50</li>
-              <li data-id="6">35</li>
-              <li data-id="5">25</li>
-              <line-break class="line-break" data-silver>
-                <span class="line-break-left"></span>
-                <span class="line-break-right"></span>
-              </line-break>
-              <li data-id="4">15</li>
-              <li data-id="3">8</li>
-              <li data-id="2">4</li>
-              <li data-id="1">2</li>
-              <line-break class="line-break" data-bronze>
-                <span class="line-break-left milestone-limit"></span>
-                <span class="line-break-right milestone-limit"></span>
-              </line-break>
-              <li data-id="0">0</li>
-            </ul>
-        </div>
-    </div>
-    <div class="question-container" >
-      <div class="question-navigation-container">
-        <div class="next-answer" data-next-answer-button>
-          <span> >> </span>
-        </div>
-        <div class="next-question" data-next-question-button>
-            <span>Next</span>
-        </div>
-      </div>
-      <div class="question-section" data-question-container>
-        <div class="question-box" data-question>
-          <p>The question will appear here?</p>
-        </div>
-        <div class="answer-box">
-          <ul class="answer-list">
-          <li><span>A.</span><p>answer of the first</p></li>
-          <li><span>B.</span> <p>answer of b</p> </li>
-          <li><span>C.</span> <p>answer of c</p> </li>
-          <li><span>D.</span> <p>answer of d</p> </li>
+            <li data-id="7">50</li>
+            <li data-id="6">35</li>
+            <li data-id="5">25</li>
+            <line-break class="line-break" data-silver>
+              <span class="line-break-left"></span>
+              <span class="line-break-right"></span>
+            </line-break>
+            <li data-id="4">15</li>
+            <li data-id="3">8</li>
+            <li data-id="2">4</li>
+            <li data-id="1">2</li>
+            <line-break class="line-break" data-bronze>
+              <span class="line-break-left milestone-limit"></span>
+              <span class="line-break-right milestone-limit"></span>
+            </line-break>
+            <li data-id="0">0</li>
           </ul>
         </div>
       </div>
-    </div>
-    <div class="life-line-container">
-      <figure>
-        <img src="./assets/image/kbcOption.png" alt="">
-      </figure>
+      <div class="question-container" >
+        <div class="ready-button" data-ready-button>
+          Ready
+        </div>
+        <div class="question-navigation-container">
+          <div class="next-answer" data-next-answer-button>
+            <span> >> </span>
+          </div>
+          <div class="next-question" data-next-question-button>
+            <span>Next</span>
+          </div>
+        </div>
+        <div class="question-section" data-question-container>
+          <div class="question-box" data-question>
+            <p>The question will appear here?</p>
+          </div>
+          <div class="answer-box">
+            <ul class="answer-list">
+              <li><span>A.</span><p>answer of the first</p></li>
+              <li><span>B.</span> <p>answer of b</p> </li>
+              <li><span>C.</span> <p>answer of c</p> </li>
+              <li><span>D.</span> <p>answer of d</p> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="life-line-container">
+        <figure>
+          <img src="./assets/image/kbcOption.png" alt="">
+        </figure>
         <div class="life-line-box">
           <ul class="life-line-list" data-lifeline-list>
             <li class="fifty-fifty" data-id="fiftyFifty"> 50<span></span>50</li>
             <li class="opt-google" data-id="google"> G </li>
             <li class="poll" data-id="poll">
               <figure>
-              <img src="./assets/image/heart.png">
-            </figure>
+                <img src="./assets/image/heart.png">
+              </figure>
             </li>
             <li class="times-two" data-id="timesTwo">x2 </li>
           </ul>
         </div>
-    </div>
+      </div>
   </div>
   <div class="banner-container remove" data-banner>
+    <div class="bg-container"></div>
     <div class="welcome" data-welcome>
         <h2>Ko <br>Banna <br>Chahancha <br><span class="emphasis">SaayaPati?</span></h2>
         <h4>Question Set : <input type="number" data-question-set-number></h4>

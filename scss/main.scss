@@ -12,7 +12,17 @@ $correct-color: lime;
 $disabled-color: lightgray;
 $bronze-color: #cd7f32;
 ///////////
-
+.bg-container{
+  position: absolute;
+  background-image:url("../assets/image/kbcsp1.jpg") ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  height: 100%;
+  width: 100%;
+}
 .banner-container {
   display: flex;
   justify-content: center;
@@ -24,8 +34,10 @@ $bronze-color: #cd7f32;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: $primary-color;
   overflow: hidden;
+  .welcome, .congratulations, .loser, .banner-button {
+    z-index: 2;
+  }
   .welcome  {
     font-size: 1.5rem;
     color: $ascent-color;
@@ -127,7 +139,6 @@ $bronze-color: #cd7f32;
 .main-container {
         position: relative;
         display: grid;
-        background: $primary-color;
         color: white;
         grid-gap: 5px;
         grid-template-columns: 1em 4fr 2fr 1em;
@@ -138,6 +149,7 @@ $bronze-color: #cd7f32;
                 ". question prize ."
                 ". question lifeline . "
                 ". . . .";
+  .zoom-container, .prize-chart-container, .question-container, .life-line-container {z-index: 2;}
   .zoom-container {
         grid-area: zoom;
         display: flex;
@@ -196,7 +208,6 @@ $bronze-color: #cd7f32;
             position: absolute;
             text-align: center;
             color: white;
-            background: $ascent-color;
             font-weight: bolder;
             cursor: pointer;
 
@@ -209,7 +220,6 @@ $bronze-color: #cd7f32;
                 border-radius: 50%;
                 font-size: 2rem;
                 line-height: 3.3em;
-                background: $primary-color;
                 color: $ascent-color;
                 border: 9px solid $ascent-color;
                   &:hover {
@@ -219,15 +229,7 @@ $bronze-color: #cd7f32;
                       box-shadow:inset 0 0 5px 45px $wrong-color, 0 0 15px 8px $wrong-color;
             }
         }
-        .ready-button {
-            bottom: -7rem;
-            padding: 15px 40px;
-            border-radius: 10px;
-            font-size: 4rem;
-            &:hover{
-                box-shadow:inset 0 0 5px 45px $ascent-color, 0 0 15px 8px $ascent-color;
-            }
-        }
+
                               }
   .prize-chart-container{
     grid-area: prize;
@@ -244,6 +246,7 @@ $bronze-color: #cd7f32;
         height: 100%;
         overflow: hidden;
         img {
+          width: 100%;
           max-width: 100%;
         }
       }
@@ -297,10 +300,27 @@ $bronze-color: #cd7f32;
     }
   }
   .question-container{
+    position: relative;
     grid-area: question;
     text-align: center;
     display: flex;
     flex-direction: column;
+    .ready-button {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      color: white;
+      background: $ascent-color;
+      font-weight: bolder;
+      cursor: pointer;
+      padding: 15px 40px;
+      border-radius: 10px;
+      font-size: 4rem;
+      &:hover{
+        box-shadow:inset 0 0 5px 45px $ascent-color, 0 0 15px 8px $ascent-color;
+      }
+    }
     .question-navigation-container {
       display: flex;
       flex-direction: row;
@@ -354,6 +374,7 @@ $bronze-color: #cd7f32;
           height: 100%;
 
           img {
+            width: 100%;
             max-width: 100%;
           }
         }
@@ -389,6 +410,7 @@ $bronze-color: #cd7f32;
             transition: transform 200ms ease-in-out;
             cursor: pointer;
             overflow: hidden;
+            background-image: url("../assets/image/kbcanswerbg.png") ;
               figure {
                 position: absolute;
                 top: 0px;
@@ -398,6 +420,7 @@ $bronze-color: #cd7f32;
                 height: 100%;
 
                 img {
+                  width: 100%;
                     max-width: 100%;
                 }
               }
@@ -431,6 +454,7 @@ $bronze-color: #cd7f32;
       height: 100%;
       overflow: hidden;
       img {
+        width: 100%;
         max-width: 100%;
       }
     }
@@ -492,6 +516,7 @@ $bronze-color: #cd7f32;
             transform: translate(-50%, -50%);
             width: 50px;
             img {
+              width: 100%;
               max-width: 100%;
             }
           }

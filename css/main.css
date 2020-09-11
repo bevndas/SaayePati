@@ -3,6 +3,17 @@
   padding: 0;
   margin: 0; }
 
+.bg-container {
+  position: absolute;
+  background-image: url("../assets/image/kbcsp1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  height: 100%;
+  width: 100%; }
+
 .banner-container {
   display: flex;
   justify-content: center;
@@ -14,8 +25,9 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: black;
   overflow: hidden; }
+  .banner-container .welcome, .banner-container .congratulations, .banner-container .loser, .banner-container .banner-button {
+    z-index: 2; }
   .banner-container .welcome {
     font-size: 1.5rem;
     color: gold;
@@ -142,12 +154,13 @@
 .main-container {
   position: relative;
   display: grid;
-  background: black;
   color: white;
   grid-gap: 5px;
   grid-template-columns: 1em 4fr 2fr 1em;
   grid-template-rows: 1em 40vh 10em calc(60vh - 12em - 20px) 1em;
   grid-template-areas: ". . . ." ". zoom prize ." ". question prize ." ". question lifeline . " ". . . ."; }
+  .main-container .zoom-container, .main-container .prize-chart-container, .main-container .question-container, .main-container .life-line-container {
+    z-index: 2; }
   .main-container .zoom-container {
     grid-area: zoom;
     display: flex;
@@ -193,7 +206,6 @@
       position: absolute;
       text-align: center;
       color: white;
-      background: gold;
       font-weight: bolder;
       cursor: pointer; }
     .main-container .zoom-container .quit-button {
@@ -204,7 +216,6 @@
       border-radius: 50%;
       font-size: 2rem;
       line-height: 3.3em;
-      background: black;
       color: gold;
       border: 9px solid gold; }
       .main-container .zoom-container .quit-button:hover {
@@ -212,13 +223,6 @@
         color: white;
         background: red;
         box-shadow: inset 0 0 5px 45px red, 0 0 15px 8px red; }
-    .main-container .zoom-container .ready-button {
-      bottom: -7rem;
-      padding: 15px 40px;
-      border-radius: 10px;
-      font-size: 4rem; }
-      .main-container .zoom-container .ready-button:hover {
-        box-shadow: inset 0 0 5px 45px gold, 0 0 15px 8px gold; }
   .main-container .prize-chart-container {
     grid-area: prize; }
     .main-container .prize-chart-container .prize-chart-box {
@@ -234,6 +238,7 @@
         height: 100%;
         overflow: hidden; }
         .main-container .prize-chart-container .prize-chart-box figure img {
+          width: 100%;
           max-width: 100%; }
       .main-container .prize-chart-container .prize-chart-box .prize-list {
         list-style-type: none; }
@@ -272,10 +277,25 @@
           .main-container .prize-chart-container .prize-chart-box .prize-list .line-break span.milestone-limit {
             background: gold; }
   .main-container .question-container {
+    position: relative;
     grid-area: question;
     text-align: center;
     display: flex;
     flex-direction: column; }
+    .main-container .question-container .ready-button {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      color: white;
+      background: gold;
+      font-weight: bolder;
+      cursor: pointer;
+      padding: 15px 40px;
+      border-radius: 10px;
+      font-size: 4rem; }
+      .main-container .question-container .ready-button:hover {
+        box-shadow: inset 0 0 5px 45px gold, 0 0 15px 8px gold; }
     .main-container .question-container .question-navigation-container {
       display: flex;
       flex-direction: row;
@@ -324,6 +344,7 @@
           width: 100%;
           height: 100%; }
           .main-container .question-container .question-section .question-box figure img {
+            width: 100%;
             max-width: 100%; }
         .main-container .question-container .question-section .question-box p {
           font-size: 1.5rem;
@@ -354,7 +375,8 @@
             transform: scale(1);
             transition: transform 200ms ease-in-out;
             cursor: pointer;
-            overflow: hidden; }
+            overflow: hidden;
+            background-image: url("../assets/image/kbcanswerbg.png"); }
             .main-container .question-container .question-section .answer-box .answer-list li figure {
               position: absolute;
               top: 0px;
@@ -363,6 +385,7 @@
               width: 100%;
               height: 100%; }
               .main-container .question-container .question-section .answer-box .answer-list li figure img {
+                width: 100%;
                 max-width: 100%; }
             .main-container .question-container .question-section .answer-box .answer-list li:hover {
               transform: scale(1.05);
@@ -384,6 +407,7 @@
       height: 100%;
       overflow: hidden; }
       .main-container .life-line-container > figure img {
+        width: 100%;
         max-width: 100%; }
     .main-container .life-line-container .life-line-box {
       width: 100%; }
@@ -431,6 +455,7 @@
             transform: translate(-50%, -50%);
             width: 50px; }
             .main-container .life-line-container .life-line-box .life-line-list li figure img {
+              width: 100%;
               max-width: 100%; }
   .main-container .prize-chart-container,
   .main-container .life-line-container {
