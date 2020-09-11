@@ -1,0 +1,214 @@
+{
+ "bronze": [
+   {
+   "question": "Who won the American Idol in 2020?",
+   "answers": [{
+     "answerText": "Sam Smith",
+     "status": "false"
+     },
+   {
+     "answerText": "Just Sam",
+     "status": "true"
+     },
+   {
+     "answerText": "Sam",
+     "status": "false"
+     }, {
+       "answerText": "Samantha Saminolulu",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "What is the national animal of China?",
+     "answers": [{
+       "answerText": "Tiger",
+       "status": "false"
+       },
+     {
+       "answerText": "Dragon",
+       "status": "false"
+       },
+     {
+       "answerText": "Giant Panda",
+       "status": "true"
+       },
+     {
+       "answerText": "Carp(fish)",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "What is the full form of LG?",
+     "answers": [{
+       "answerText": "Logistic Goods",
+       "status": "false"
+       },
+     {
+       "answerText": "Life's Good",
+       "status": "false"
+       },
+     {
+       "answerText": "Lucky Goldstar",
+       "status": "true"
+       },
+     {
+       "answerText": "Landmark Goldson",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Which is place in Nepal is considered to be the hottest?",
+     "answers": [{
+       "answerText": "Kathmandu",
+       "status": "false"
+       },
+     {
+       "answerText": "Hetauda",
+       "status": "false"
+       },
+     {
+       "answerText": "Nepalgunj",
+       "status": "true"
+       },
+     {
+       "answerText": "Biratnagar",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "Who is the first captain to win all the ICC Trophies: World T20, World Cup and Champions Trophy?",
+     "answers": [{
+       "answerText": "Graeme Smith",
+       "status": "false"
+       },
+     {
+       "answerText": "Kumar Sangakara",
+       "status": "false"
+       },
+     {
+       "answerText": "Mahendra Singh Dhoni",
+       "status": "true"
+       },
+     {
+       "answerText": "Ricky Ponting",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "What is the current FIFA ranking of Nepal?",
+     "answers": [{
+       "answerText": "196",
+       "status": "false"
+       },
+     {
+       "answerText": "190",
+       "status": "false"
+       },
+     {
+       "answerText": "170",
+       "status": "true"
+       },
+     {
+       "answerText": "176",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Which is the biggest province of nepal?",
+     "answers": [{
+       "answerText": "Bagmati Pradesh",
+       "status": "false"
+       },
+     {
+       "answerText": "Gandaki Pradesh",
+       "status": "false"
+       },
+     {
+       "answerText": "Province No 5",
+       "status": "false"
+       },
+     {
+       "answerText": "Karnali Pradesh",
+       "status": "true"
+       }]
+   },
+
+
+
+   {
+     "question": "Which is the second avatar of Lord Vishnu?",
+     "answers": [{
+       "answerText": "Kurma",
+       "status": "true"
+       },
+     {
+       "answerText": "Matsya",
+       "status": "false"
+       },
+     {
+       "answerText": "Narasimha",
+       "status": "false"
+       },
+     {
+       "answerText": "Varaha",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "Father of computing, Charles Babbage's half brain is preserved in which museum?",
+     "answers": [{
+       "answerText": "The British Mueseum",
+       "status": "false"
+       },
+     {
+       "answerText": "Hunterian Museum",
+       "status": "true"
+       },
+     {
+       "answerText": "Royal Museum Greenwich",
+       "status": "false"
+       },
+     {
+       "answerText": "Victoria and Albert Museum",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "When was the first historic election held after the Democracy in 2007 B.S",
+     "answers": [{
+       "answerText": "2014 B.S Falgun 7",
+       "status": "false"
+       },
+     {
+       "answerText": "2014 B.S 2014 Magh 19",
+       "status": "true"
+       },
+     {
+       "answerText": "2014 B.S Mangshir 21",
+       "status": "false"
+       },
+     {
+       "answerText": "2014 B.S Paush 25",
+       "status": "false"
+       }]
+   }
+
+
+
+
+
+
+
+  ]
+ }

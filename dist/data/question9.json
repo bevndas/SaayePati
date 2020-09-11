@@ -1,0 +1,214 @@
+{
+  "bronze": [
+    {
+      "question": "Who is the highest paid Nepali Actress?",
+      "answers": [{
+        "answerText": "Namrata Shrestha",
+        "status": "false"
+      },
+        {
+          "answerText": "Samragyee RL Shah",
+          "status": "true"
+        },
+        {
+          "answerText": "Anchal Sharma",
+          "status": "false"
+        }, {
+          "answerText": "Archana Paneru",
+          "status": "false"
+        }]
+    },
+
+
+    {
+      "question": "Who is the highest earning Youtuber?",
+      "answers": [{
+        "answerText": "Dude Perfect",
+        "status": "false"
+      },
+        {
+          "answerText": "Pewdiepie",
+          "status": "false"
+        },
+        {
+          "answerText": "Ryan Kazi",
+          "status": "true"
+        },
+        {
+          "answerText": "Mr Beast",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "Which of these have shortest wave length?",
+      "answers": [{
+        "answerText": "IR",
+        "status": "false"
+      },
+        {
+          "answerText": "WIFI",
+          "status": "false"
+        },
+        {
+          "answerText": "Radiowave",
+          "status": "false"
+        },
+        {
+          "answerText": "UV",
+          "status": "true"
+        }]
+    },
+
+    {
+      "question": "Which is the largest vein in human body?",
+      "answers": [{
+        "answerText": "Auxillary Vein",
+        "status": "false"
+      },
+        {
+          "answerText": "Femoral Vein",
+          "status": "false"
+        },
+        {
+          "answerText": "Subcalvian Vein",
+          "status": "false"
+        },
+        {
+          "answerText": "The Inferior Vena Cava",
+          "status": "true"
+        }]
+    },
+
+
+    {
+      "question": "Who invented the Logarithmic tables?",
+      "answers": [{
+        "answerText": "John Doe",
+        "status": "false"
+      },
+        {
+          "answerText": "John Douglas",
+          "status": "false"
+        },
+        {
+          "answerText": "John Harrison",
+          "status": "false"
+        },
+        {
+          "answerText": "John Napier",
+          "status": "true"
+        }]
+    },
+
+    {
+      "question": "Which of these spices is the smallest in size?",
+      "answers": [{
+        "answerText": "Tej Pat",
+        "status": "false"
+      },
+        {
+          "answerText": "Marich",
+          "status": "true"
+        },
+        {
+          "answerText": "Sukmel",
+          "status": "false"
+        },
+        {
+          "answerText": "Lwang",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "Who is the SUpreme Commander in Chief of the Nepali Army?",
+      "answers": [{
+        "answerText": "Defense Minister",
+        "status": "false"
+      },
+        {
+          "answerText": "Home Minister",
+          "status": "false"
+        },
+        {
+          "answerText": "President",
+          "status": "true"
+        },
+        {
+          "answerText": "Prime Minister",
+          "status": "false"
+        }]
+    },
+
+
+
+    {
+      "question": "Which of the following is not a constituent of Panchai Baja?",
+      "answers": [{
+        "answerText": "Binayo",
+        "status": "true"
+      },
+        {
+          "answerText": "Damaha",
+          "status": "false"
+        },
+        {
+          "answerText": "Jhyali",
+          "status": "false"
+        },
+        {
+          "answerText": "Tyamko",
+          "status": "false"
+        }]
+    },
+
+
+    {
+      "question": "Which is the oldest tennis tournament in the world?",
+      "answers": [{
+        "answerText": "Australian Open",
+        "status": "false"
+      },
+        {
+          "answerText": "Wimbledon",
+          "status": "true"
+        },
+        {
+          "answerText": "French Open",
+          "status": "false"
+        },
+        {
+          "answerText": "US Open",
+          "status": "false"
+        }]
+    },
+
+    {
+      "question": "When was Hotel Association of Nepal (HAN) established?",
+      "answers": [{
+        "answerText": "1965 AD",
+        "status": "false"
+      },
+        {
+          "answerText": "1966 AD",
+          "status": "true"
+        },
+        {
+          "answerText": "1967 AD",
+          "status": "false"
+        },
+        {
+          "answerText": "1968 AD",
+          "status": "false"
+        }]
+    }
+
+
+
+
+
+
+
+  ]
+}

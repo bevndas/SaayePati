@@ -1,0 +1,213 @@
+{
+ "bronze": [
+   {
+  "question": "What is the name of the famous street in Kathmandu, where the first hippies lived in the 60's and 70's?",
+   "answers": [{
+     "answerText": "Fun Street",
+     "status": "false"
+     },
+   {
+     "answerText": "Hippie Galli",
+     "status": "false"
+     },
+   {
+     "answerText": "Freak Street",
+     "status": "true"
+     },
+   {
+     "answerText": "Steak Street",
+     "status": "false"
+     }]
+ },
+
+   {
+   "question": "Which city is known as the city of temples",
+   "answers": [{
+     "answerText": "Karachi",
+     "status": "false"
+     },
+   {
+     "answerText": "Kathmandu",
+     "status": "true"
+     },
+   {
+     "answerText": "Mumbai",
+     "status": "false"
+     }, {
+       "answerText": "Thimpu",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "Which is the oldest institute of higher learning in Nepal?",
+     "answers": [{
+       "answerText": "Ratna Rajya College",
+       "status": "false"
+       },
+     {
+       "answerText": "Mahendra Morang College",
+       "status": "false"
+       },
+     {
+       "answerText": "Shanker Dev Campus",
+       "status": "false"
+       },
+     {
+       "answerText": "Tri-Chandra College",
+       "status": "true"
+       }]
+   },
+
+   {
+     "question": "What is the full form of A.M which is used while depicting time?",
+     "answers": [{
+       "answerText": "Alter Modulation",
+       "status": "false"
+       },
+     {
+       "answerText": "After Meridiem",
+       "status": "false"
+       },
+     {
+       "answerText": "Anti-Meridiem",
+       "status": "true"
+       },
+     {
+       "answerText": "Auto Meridiem",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "What was the first toy to be advertised on television?",
+     "answers": [{
+       "answerText": "Barbie Doll",
+       "status": "false"
+       },
+     {
+       "answerText": "Delta Force",
+       "status": "false"
+       },
+     {
+       "answerText": "Mr Potato Head",
+       "status": "true"
+       },
+     {
+       "answerText": "Teddy",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Which two U.S states dont observe DayLight Saving Time?",
+     "answers": [{
+       "answerText": "Florida and California",
+       "status": "false"
+       },
+     {
+       "answerText": "Arizona and Hawaii",
+       "status": "true"
+       },
+     {
+       "answerText": "Washington and Denver",
+       "status": "false"
+       },
+     {
+       "answerText": "Alabama and Michigun",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "National Vigilance Center is under:",
+     "answers": [{
+       "answerText": "Prime Minister",
+       "status": "true"
+       },
+     {
+       "answerText": "Home Minister",
+       "status": "false"
+       },
+     {
+       "answerText": "Chief Justice",
+       "status": "false"
+       },
+     {
+       "answerText": "Chief CIAA",
+       "status": "false"
+       }]
+   },
+
+
+
+   {
+     "question": "Who wrote the lyrics of the song  'Phool ko aankha ma phoolai sansar'?",
+     "answers": [{
+       "answerText": "Dinesh Adhikari",
+       "status": "false"
+       },
+     {
+       "answerText": "Durga Lal Shrestha",
+       "status": "true"
+       },
+     {
+       "answerText": "Krishna Hari Baral",
+       "status": "false"
+       },
+     {
+       "answerText": "Ramesh Kshitij",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "What is the smallest bone in the human body?",
+     "answers": [{
+       "answerText": "Stapes",
+       "status": "true"
+       },
+     {
+       "answerText": "Femur",
+       "status": "true"
+       },
+     {
+       "answerText": "Fibia",
+       "status": "false"
+       },
+     {
+       "answerText": "Scapula",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "When did Prithivi Narayan Shah pass away?",
+     "answers": [{
+       "answerText": "January 15, 1830 A.D",
+       "status": "false"
+       },
+     {
+       "answerText": "February 13, 1840 A.D",
+       "status": "false"
+       },
+     {
+       "answerText": "January 15, 1831 A.D",
+       "status": "true"
+       },
+     {
+       "answerText": "March 15, 1832 A.D",
+       "status": "false"
+       }]
+   }
+
+
+
+
+
+
+
+  ]
+ }

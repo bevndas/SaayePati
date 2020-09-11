@@ -1,0 +1,212 @@
+{
+ "bronze": [
+   {
+   "question": "Who is known as the Iron-Man of Nepal",
+   "answers": [{
+     "answerText": "B.P Koirala",
+     "status": "false"
+     },
+   {
+     "answerText": "Dr. K.I Singh",
+     "status": "false"
+     },
+   {
+     "answerText": "GaneshMan Singh",
+     "status": "true"
+     }, {
+       "answerText": "Madan Bhandari",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "What is the full form of U.S.B?",
+     "answers": [{
+       "answerText": "Universal Small Border",
+       "status": "false"
+       },
+     {
+       "answerText": "Uniform Serial Bus",
+       "status": "false"
+       },
+     {
+       "answerText": "Universal Serial Bus",
+       "status": "true"
+       },
+     {
+       "answerText": "Uniform Serial Bust",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "In radio transmission, what does 'MW' stand for?",
+     "answers": [{
+       "answerText": "Mostly Western",
+       "status": "false"
+       },
+     {
+       "answerText": "Micro Wave",
+       "status": "false"
+       },
+     {
+       "answerText": "Mini Wavelength",
+       "status": "false"
+       },
+     {
+       "answerText": "Medium Wave",
+       "status": "true"
+       }]
+   },
+
+   {
+     "question": "What is the largest organ of our body?",
+     "answers": [{
+       "answerText": "Stomach",
+       "status": "false"
+       },
+     {
+       "answerText": "Large Intestine",
+       "status": "false"
+       },
+     {
+       "answerText": "Skin",
+       "status": "true"
+       },
+     {
+       "answerText": "Liver",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "'Mein Kampf' is the autobiography of:?",
+     "answers": [{
+       "answerText": "Adolf Hilter",
+       "status": "true"
+       },
+     {
+       "answerText": "Maxim Gorky",
+       "status": "false"
+       },
+     {
+       "answerText": "Oscar Wilde",
+       "status": "false"
+       },
+     {
+       "answerText": "Winston Churchill",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Who played the character of Tarzan in the movie 'The Legend of Tarzan'?",
+     "answers": [{
+       "answerText": "Bill Skarsgard",
+       "status": "false"
+       },
+     {
+       "answerText": "Alexander Skarsgard",
+       "status": "true"
+       },
+     {
+       "answerText": "Will Skarsgard",
+       "status": "false"
+       },
+     {
+       "answerText": "Alex Skarsgard",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Who designed the logo of SAARC?",
+     "answers": [{
+       "answerText": "Bikash Bharadwaj, India",
+       "status": "false"
+       },
+     {
+       "answerText": "Haidar Akhtar, Pakistan",
+       "status": "false"
+       },
+     {
+       "answerText": "Shailendra Maharjan, Nepal",
+       "status": "true"
+       },
+     {
+       "answerText": "Karim Quadir, Bangladesh",
+       "status": "false"
+       }]
+   },
+
+
+
+   {
+     "question": "Lord Vishnu has ten avatars. Narasimha is :?",
+     "answers": [{
+       "answerText": "Third Avatar",
+       "status": "false"
+       },
+     {
+       "answerText": "First Avatar",
+       "status": "false"
+       },
+     {
+       "answerText": "Fifth Avatar",
+       "status": "false"
+       },
+     {
+       "answerText": "Fourth Avatar",
+       "status": "true"
+       }]
+   },
+
+
+   {
+     "question": "Which company was in-charge of constructing Burj Khalifa?",
+     "answers": [{
+       "answerText": "Samsung",
+       "status": "true"
+       },
+     {
+       "answerText": "Apple",
+       "status": "false"
+       },
+     {
+       "answerText": "Royal BAM Group",
+       "status": "false"
+       },
+     {
+       "answerText": "Bechtel",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "When was OnePlus company founded?",
+     "answers": [{
+       "answerText": "December 14, 2014 A.D",
+       "status": "false"
+       },
+     {
+       "answerText": "December 16, 2013 A.D",
+       "status": "true"
+       },
+     {
+       "answerText": "January 12, 2014 A.D",
+       "status": "false"
+       },
+     {
+       "answerText": "January 12, 2013 A.D",
+       "status": "false"
+       }]
+   }
+
+
+
+
+
+
+
+  ]
+ }

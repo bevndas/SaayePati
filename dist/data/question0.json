@@ -1,0 +1,214 @@
+{
+ "bronze": [
+
+   {
+   "question": "What are the areas due to which the present conflict between Nepal and India is taking place?",
+   "answers": [{
+     "answerText": "Lipudhura and Limpiyalekh",
+     "status": "false"
+     },
+   {
+     "answerText": "Lipulekh and Limpiyadhura",
+     "status": "true"
+     },
+   {
+     "answerText": "Limpiyadhura and Bardia",
+     "status": "false"
+     }, {
+       "answerText": "Kalapani and Limpudhura",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "What is the national animal of India?",
+     "answers": [{
+       "answerText": "Tiger",
+       "status": "true"
+       },
+     {
+       "answerText": "Cow",
+       "status": "false"
+       },
+     {
+       "answerText": "Lhophophorus",
+       "status": "false"
+       },
+     {
+       "answerText": "Goat",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Which is the smallest country in the world?",
+     "answers": [{
+       "answerText": "Vatican City",
+       "status": "true"
+       },
+     {
+       "answerText": "Luxemborg",
+       "status": "false"
+       },
+     {
+       "answerText": "Israel",
+       "status": "false"
+       },
+     {
+       "answerText": "Nepal",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Which planet is the hottest in the solar system?",
+     "answers": [{
+       "answerText": "Mars",
+       "status": "false"
+       },
+     {
+       "answerText": "Mercury",
+       "status": "false"
+       },
+     {
+       "answerText": "Venus",
+       "status": "true"
+       },
+     {
+       "answerText": "Jupiter",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "What is the full form of U.R.L?",
+     "answers": [{
+       "answerText": "Universal Resource Locator",
+       "status": "false"
+       },
+     {
+       "answerText": "Uniform Resource Locator",
+       "status": "true"
+       },
+     {
+       "answerText": "Union Resource Location",
+       "status": "false"
+       },
+     {
+       "answerText": "Uniform Resource Location",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Usain Bolt set a world record for a 100m race. What was his time?",
+     "answers": [{
+       "answerText": "9.50",
+       "status": "false"
+       },
+     {
+       "answerText": "9.55",
+       "status": "false"
+       },
+     {
+       "answerText": "9.58",
+       "status": "true"
+       },
+     {
+       "answerText": "9.68",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Which European nation was said to invent hot dogs?",
+     "answers": [{
+       "answerText": "Germany",
+       "status": "true"
+       },
+     {
+       "answerText": "France",
+       "status": "false"
+       },
+     {
+       "answerText": "England",
+       "status": "false"
+       },
+     {
+       "answerText": "Italy",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "What is the full form of CNN?",
+     "answers": [{
+       "answerText": "Cable Network and News",
+       "status": "false"
+       },
+     {
+       "answerText": "Current News Network",
+       "status": "false"
+       },
+     {
+       "answerText": "Cable News Network",
+       "status": "true"
+       },
+     {
+       "answerText": "Common Network for News",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "From when was 'No Horn Policy' adopted in Kathmandu?",
+     "answers": [{
+       "answerText": "2073 B.S Baishak 1",
+       "status": "false"
+       },
+     {
+       "answerText": "2074 B.S Baishak 1",
+       "status": "true"
+       },
+     {
+       "answerText": "2073 B.S Jestha 1",
+       "status": "false"
+       },
+     {
+       "answerText": "2074 B.S Jestha 1",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "Which is the first conservation area established in Nepal?",
+     "answers": [{
+       "answerText": "Annapurna Conservation Area",
+       "status": "true"
+       },
+     {
+       "answerText": "Gaurishankar Conservation Area",
+       "status": "false"
+       },
+     {
+       "answerText": "Kanchanjunga Conservation Area",
+       "status": "false"
+       },
+     {
+       "answerText": "Manasulu Conservation Area",
+       "status": "false"
+       }]
+   }
+
+
+
+
+
+
+
+  ]
+ }
