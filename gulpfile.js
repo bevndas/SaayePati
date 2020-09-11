@@ -22,7 +22,7 @@ function jsUglify() {
         .pipe(gulp.dest('dist/js'))
 }
 function images() {
-    return gulp.src('assets/image/heart.png')
+    return gulp.src('assets/image/*.*')
         .pipe(cache(imagemin({
             interlaced: true
         })))
