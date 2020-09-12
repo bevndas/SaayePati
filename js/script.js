@@ -61,151 +61,151 @@ const COLOR_CODES = {
 
 
 
-let prizeThreshold = {
-  0: {
-    index: 0,
-    reached: false,
-    previousLevel: 'bronze',
-    level: "bronze",
-    nextLevel: "bronze"
-  },
-  4: {
-    index: 4,
-    reached: false,
-    previousLevel: 'bronze',
-    level: "bronze",
-    nextLevel: "silver"
-  },
-  7: {
-    index: 7,
-    reached: false,
-    previousLevel: 'bronze',
-    level: "silver",
-    nextLevel: "gold"
-  },
-  10: {
-    index: 10,
-    reached: false,
-    previousLevel: 'silver',
-    level: "gold",
-    nextLevel: "gold"
-  }
-}
-let currentBannerType;
-let timePassed = 0;
-let timeLeft = TIME_LIMIT;
-let timerInterval = null;
-let gameWon = false;
-let gameStarted = false;
-let gameQuit = false;
+      let prizeThreshold = {
+          0: {
+              index: 0,
+              reached: false,
+              previousLevel: 'bronze',
+              level: "bronze",
+              nextLevel: "bronze"
+          },
+          4: {
+              index: 4,
+              reached: false,
+              previousLevel: 'bronze',
+              level: "bronze",
+              nextLevel: "silver"
+          },
+          7: {
+              index: 7,
+              reached: false,
+              previousLevel: 'bronze',
+              level: "silver",
+              nextLevel: "gold"
+          },
+          10: {
+              index: 10,
+              reached: false,
+              previousLevel: 'silver',
+              level: "gold",
+              nextLevel: "gold"
+          }
+      }
+      let currentBannerType;
+      let timePassed = 0;
+      let timeLeft = TIME_LIMIT;
+      let timerInterval = null;
+      let gameWon = false;
+      let gameStarted = false;
+      let gameQuit = false;
 
 
-/**  -- Event Listeners --  **/
+      /**  -- Event Listeners --  **/
 
-/** Quit the show by contestant  **/
-quitButton.addEventListener('click', e => {
-    wrongAnswerSound.play();
-    gameQuit = true;
-    resetStates();
-    gameLost();
-});
+      /** Quit the show by contestant  **/
+      quitButton.addEventListener('click', e => {
+          wrongAnswerSound.play();
+          gameQuit = true;
+          resetStates();
+          gameLost();
+      });
 
-/** handle  start or return options  **/
-bannerButton.addEventListener('click', e => {
-  changeBannerState(banner, false);
-  changeBannerState(currentBannerType, false);
-  if (currentBannerType !== welcomeBanner) {
-      currentQuestionIndex++;
-      initGame();
-  }
-});
+      /** handle  start or return options  **/
+      bannerButton.addEventListener('click', e => {
+          changeBannerState(banner, false);
+          changeBannerState(currentBannerType, false);
+          if (currentBannerType !== welcomeBanner) {
+              currentQuestionIndex++;
+              initGame();
+          }
+      });
 
-/** handle lifelines **/
-lifeLineList.addEventListener('click', e=> {
-  let selectedLifeLine;
-  let targetLifeLine =  e.target;
-  if (e.target.tagName.toLowerCase() === 'li') {
-    selectedLifeLine = targetLifeLine.dataset.id;
-  } else { return;}
-  if (disableLifeLineButton[selectedLifeLine]) {
-    return;
-  }
-  executeLifeLine(selectedLifeLine);
-  disableLifeLineButton[selectedLifeLine] = true;
-  toggleClass(targetLifeLine, 'disabled', true);
-});
+      /** handle lifelines **/
+      lifeLineList.addEventListener('click', e=> {
+          let selectedLifeLine;
+          let targetLifeLine =  e.target;
+          if (e.target.tagName.toLowerCase() === 'li') {
+              selectedLifeLine = targetLifeLine.dataset.id;
+          } else { return;}
+          if (disableLifeLineButton[selectedLifeLine]) {
+              return;
+          }
+          executeLifeLine(selectedLifeLine);
+          disableLifeLineButton[selectedLifeLine] = true;
+          toggleClass(targetLifeLine, 'disabled', true);
+      });
 
-/** smooth transition to start the game  **/
-readyButton.addEventListener('click', e => {
-    console.log('click')
-  if (gameStarted) {
-    return;
-  }
-  fetchQuestion();
-  mainSound.play();
-  resetQuestionNavigationButtons(false);
-  gameStarted = true;
-  canRenderNextQuestion = true;
-});
+      /** smooth transition to start the game  **/
+      readyButton.addEventListener('click', e => {
+          console.log('click')
+          if (gameStarted) {
+              return;
+          }
+          fetchQuestion();
+          mainSound.play();
+          resetQuestionNavigationButtons(false);
+          gameStarted = true;
+          canRenderNextQuestion = true;
+      });
 
-/**  show next question on click  **/
-nextQuestionButton.addEventListener('click', e => {
-  if (!canRenderNextQuestion) {
-        return;
-  }
-  nextQuestionSound.play();
-  suspenseSound.play();
-  suspenseSoundInterval =  setInterval(() => {
-        suspenseSound.play();
-    }, 50000);
-  clearInterval()
-  getNextQuestion();
-  canRenderNextQuestion = false;
-  canRenderNextAnswer = true;
-});
+      /**  show next question on click  **/
+      nextQuestionButton.addEventListener('click', e => {
+          if (!canRenderNextQuestion) {
+              return;
+          }
+          nextQuestionSound.play();
+          suspenseSound.play();
+          suspenseSoundInterval =  setInterval(() => {
+              suspenseSound.play();
+          }, 50000);
+          clearInterval()
+          getNextQuestion();
+          canRenderNextQuestion = false;
+          canRenderNextAnswer = true;
+      });
 
-/**  show individual answer on click  **/
-nextAnswerButton.addEventListener('click', e => {
-  if (!canRenderNextAnswer) {
-    return;
-  }
-  if (!Boolean(answerBox)) {
-    renderAnswerBoxAndList(currentQuestionAndAnswers['answers']);
-  }
-  renderIndividualAnswer(answerCounter);
-  answerCounter++;
-  if (answerCounter == 4) {
-    canRenderNextAnswer = false;
-  }
-});
+      /**  show individual answer on click  **/
+      nextAnswerButton.addEventListener('click', e => {
+          if (!canRenderNextAnswer) {
+              return;
+          }
+          if (!Boolean(answerBox)) {
+              renderAnswerBoxAndList(currentQuestionAndAnswers['answers']);
+          }
+          renderIndividualAnswer(answerCounter);
+          answerCounter++;
+          if (answerCounter == 4) {
+              canRenderNextAnswer = false;
+          }
+      });
 
-/** toggle element class **/
-function toggleClass(elem, className, bool) {
+      /** toggle element class **/
+      function toggleClass(elem, className, bool) {
     if (bool) {
-      elem.classList.add(className);
-      return;
+        elem.classList.add(className);
+        return;
     }
     elem.classList.remove(className);
 }
 
 /** run the life line as selected **/
 function executeLifeLine(selectedLifeLine) {
-  switch (selectedLifeLine) {
-    case 'fiftyFifty':
-      fiftyFiftyLogic();
-      break;
-    case 'google':
-        googleLogic();
-        break;
-    case 'poll':
-          pollLogic();
-          break;
-      case 'timesTwo':
-        timesTwoLogic();
-        break;
-    default:
-      console.log('Error on selecting lifeline');
-  }
+    switch (selectedLifeLine) {
+        case 'fiftyFifty':
+            fiftyFiftyLogic();
+            break;
+        case 'google':
+            googleLogic();
+            break;
+        case 'poll':
+            pollLogic();
+            break;
+        case 'timesTwo':
+            timesTwoLogic();
+            break;
+        default:
+            console.log('Error on selecting lifeline');
+    }
 }
 
 /**  fetch the question from API **/
@@ -213,26 +213,26 @@ function fetchQuestion() {
     if (questionSetNumber.value <= 0) {
         questionSetNumber.value = 1;
     }
-  fetch(`./data/question${--questionSetNumber.value}.json`)
-  .then(res => res.json())
-  .then(questions => {
-  questionBank = questions;
-  })
+    fetch(`./data/question${--questionSetNumber.value}.json`)
+        .then(res => res.json())
+        .then(questions => {
+            questionBank = questions;
+        })
 }
 
 /**  start the game **/
 function initGame() {
-  resetGameDesign();
-  resetGameStates();
-  resetBannerStates();
+    resetGameDesign();
+    resetGameStates();
+    resetBannerStates();
 }
 
 /**  re- render game design **/
 function resetGameDesign() {
-  resetPrizeList();
-  resetLifeLine();
-  resetQuestionContainer();
-  resetQuestionNavigationButtons(true);
+    resetPrizeList();
+    resetLifeLine();
+    resetQuestionContainer();
+    resetQuestionNavigationButtons(true);
 }
 
 /** re-render buttons //
@@ -240,20 +240,20 @@ function resetGameDesign() {
  bool is set to false for begining reseting when game starts
  bool is set to true for reseting when game restarts **/
 function resetQuestionNavigationButtons(bool) {
-  toggleClass(nextQuestionButton, 'hide' , bool);
-  toggleClass(nextAnswerButton, 'hide', bool);
-  toggleClass(quitButton, 'hide', bool);
-  toggleClass(readyButton, 'hide', !bool);
+    toggleClass(nextQuestionButton, 'hide' , bool);
+    toggleClass(nextAnswerButton, 'hide', bool);
+    toggleClass(quitButton, 'hide', bool);
+    toggleClass(readyButton, 'hide', !bool);
 }
 
 /** reset the prizelist design on restart  **/
 function resetPrizeList() {
-  const classLevel = getLevelClass();
-  if (currentLevel == 10) {
-    --currentLevel;
-  }
-  toggleClass( prizeList[currentLevel + 1], classLevel, false);
-  resetLimitMilestone();
+    const classLevel = getLevelClass();
+    if (currentLevel == 10) {
+        --currentLevel;
+    }
+    toggleClass( prizeList[currentLevel + 1], classLevel, false);
+    resetLimitMilestone();
 }
 
 /** resetting the milestone bar in prize list **/
@@ -261,8 +261,8 @@ function resetLimitMilestone() {
     const silverLimit = getElem('data-silver').getElementsByTagName('span');
     const goldLimit = getElem('data-gold').getElementsByTagName('span');
     for(let i = 0;i < 2; i++) {
-      toggleClass(silverLimit[i], 'milestone-limit', false);
-      toggleClass(goldLimit[i], 'milestone-limit', false);
+        toggleClass(silverLimit[i], 'milestone-limit', false);
+        toggleClass(goldLimit[i], 'milestone-limit', false);
     }
 }
 
@@ -270,7 +270,7 @@ function resetLimitMilestone() {
 function resetLifeLine() {
     const lifelines = Array.from(getElem('data-lifeline-list').getElementsByTagName('li'));
     lifelines.forEach((lifeline) => {
-      toggleClass(lifeline, 'disabled', false);
+        toggleClass(lifeline, 'disabled', false);
     });
 }
 
@@ -281,133 +281,133 @@ function resetQuestionContainer() {
 
 /** get the level the class (bronze, silver, gold) according to the current level  **/
 function getLevelClass() {
-  const threshold = getPrizeThresholdInfo();
-  return threshold['nextLevel'];
+    const threshold = getPrizeThresholdInfo();
+    return threshold['nextLevel'];
 }
 
 /**  get the threshold details for manipulating the prize **/
 function getPrizeThresholdInfo() {
-  let prizeIndexArray = getPrizeThresholdArray();
-  prizeIndex = Math.max(...prizeIndexArray);
-  return prizeThreshold[prizeIndex];
+    let prizeIndexArray = getPrizeThresholdArray();
+    prizeIndex = Math.max(...prizeIndexArray);
+    return prizeThreshold[prizeIndex];
 }
 
 /** get  the threshold indexes **/
 function getPrizeThresholdArray() {
-  let prizeIndexArray = [];
-  for (const index in prizeThreshold) {
-    if (index <= currentLevel) {
-        prizeIndexArray.push(index)
+    let prizeIndexArray = [];
+    for (const index in prizeThreshold) {
+        if (index <= currentLevel) {
+            prizeIndexArray.push(index)
+        }
     }
-  }
-  return prizeIndexArray;
+    return prizeIndexArray;
 }
 function getPrizeThresholdCategoryIndex() {
-  const prizeIndexes = [0,4,7,10];
-  const maxPrizeIndex = Math.max(...getPrizeThresholdArray());
-  const indexOfMaxPrizeIndex = prizeIndexes.indexOf(maxPrizeIndex);
-  if ( indexOfMaxPrizeIndex !== -1 &&  (indexOfMaxPrizeIndex < (prizeIndexes.length - 1))) {
-    return prizeIndexes[indexOfMaxPrizeIndex + 1];
-  }
+    const prizeIndexes = [0,4,7,10];
+    const maxPrizeIndex = Math.max(...getPrizeThresholdArray());
+    const indexOfMaxPrizeIndex = prizeIndexes.indexOf(maxPrizeIndex);
+    if ( indexOfMaxPrizeIndex !== -1 &&  (indexOfMaxPrizeIndex < (prizeIndexes.length - 1))) {
+        return prizeIndexes[indexOfMaxPrizeIndex + 1];
+    }
 }
 
 /** reseting game counters on restart  **/
 function resetGameStates() {
-  gameWon = false;
-  gameStarted = false;
-  answerBox = null;
-  answerList= null;
-  answerListElems = null;
-  answerCounter = 0;
-  questionBank = null;
-  currentLevel = 0;
-  twoTimesTempAnswer = false;
-  resetingLifeLineButtons();
-  resetingPrizeThreshold();
+    gameWon = false;
+    gameStarted = false;
+    answerBox = null;
+    answerList= null;
+    answerListElems = null;
+    answerCounter = 0;
+    questionBank = null;
+    currentLevel = 0;
+    twoTimesTempAnswer = false;
+    resetingLifeLineButtons();
+    resetingPrizeThreshold();
 }
 
 /** resetting prize threshold **/
 function resetingPrizeThreshold() {
-  prizeThreshold = {
-    0: {
-      index: 0,
-      reached: false,
-      previousLevel: 'bronze',
-      level: "bronze",
-      nextLevel: "bronze"
-    },
-    4: {
-      index: 4,
-      reached: false,
-      previousLevel: 'bronze',
-      level: "bronze",
-      nextLevel: "silver"
-    },
-    7: {
-      index: 7,
-      reached: false,
-        previousLevel: 'bronze',
-      level: "silver",
-      nextLevel: "gold"
-    },
-    10: {
-      index: 10,
-      reached: false,
-      previousLevel: 'silver',
-      level: "gold",
-      nextLevel: "gold"
-    }
-  };
+    prizeThreshold = {
+        0: {
+            index: 0,
+            reached: false,
+            previousLevel: 'bronze',
+            level: "bronze",
+            nextLevel: "bronze"
+        },
+        4: {
+            index: 4,
+            reached: false,
+            previousLevel: 'bronze',
+            level: "bronze",
+            nextLevel: "silver"
+        },
+        7: {
+            index: 7,
+            reached: false,
+            previousLevel: 'bronze',
+            level: "silver",
+            nextLevel: "gold"
+        },
+        10: {
+            index: 10,
+            reached: false,
+            previousLevel: 'silver',
+            level: "gold",
+            nextLevel: "gold"
+        }
+    };
 }
 
 /** reactivating the disabled lifelines **/
 function resetingLifeLineButtons() {
-  disableLifeLineButton =  {
-    fiftyFifty: false,
-    google: false,
-    poll: false,
-    timesTwo: false
-  };
+    disableLifeLineButton =  {
+        fiftyFifty: false,
+        google: false,
+        poll: false,
+        timesTwo: false
+    };
 }
 
 /**  rendering the button design and text in banner **/
 function setBannerButtonStates() {
-  bannerButton.innerText = gameStarted ? 'Return': 'Enter';
-  if  (gameStarted && !gameWon) {
+    bannerButton.innerText = gameStarted ? 'Return': 'Enter';
+    if  (gameStarted && !gameWon) {
         toggleClass(bannerButton, 'lost-button', true);
         return;
-  }
-  toggleClass(bannerButton, 'lost-button', false);
+    }
+    toggleClass(bannerButton, 'lost-button', false);
 }
 
 /**  rendering the banner **/
 function resetBannerStates() {
-      resetBanner();
-      showBanner(welcomeBanner);
+    resetBanner();
+    showBanner(welcomeBanner);
 }
 
 /**  show or hide the banner **/
 function changeBannerState(bannerType, type) {
-  if (type) {
-    toggleClass(bannerType, 'remove', false);
-    return;
-  }
-   toggleClass(bannerType, 'remove', true);
+    if (type) {
+        toggleClass(bannerType, 'remove', false);
+        return;
+    }
+    toggleClass(bannerType, 'remove', true);
 }
 
 /** creating the question box container and render it  **/
 function renderQuestion(question) {
-        const questionBox = document.createElement('div');
-        questionBox.classList.add('question-box');
-        const figure = document.createElement('figure');
-        const img = document.createElement('img');
-        img.src = './assets/image/kbcanswerbg.png';
-        figure.appendChild(img);
-        questionBox.appendChild(figure);
-        const pTag = document.createElement('p');
-        pTag.innerText = question;
-        questionBox.appendChild(pTag);
-        questionContainer.appendChild(questionBox);
+    const questionBox = document.createElement('div');
+    questionBox.classList.add('question-box');
+    const figure = document.createElement('figure');
+    const img = document.createElement('img');
+    img.src = './assets/image/kbcanswerbg.png';
+    figure.appendChild(img);
+    questionBox.appendChild(figure);
+    const pTag = document.createElement('p');
+    pTag.innerText = question;
+    questionBox.appendChild(pTag);
+    questionContainer.appendChild(questionBox);
 }
 
 /** rendering individual answer on button click  **/
@@ -427,83 +427,81 @@ function getNextQuestion() {
 
 /** re-render prize list based on level update  **/
 function updatePrizeList() {
-  updateMilestoneLimit();
-  updatePrizeActive();
+    updateMilestoneLimit();
+    updatePrizeActive();
 }
 
 /** render the milestone achieved **/
 function updateMilestoneLimit() {
-  if (currentLevel == 4 || currentLevel == 7) {
-    let spanElems;
-    if (currentLevel == 4)  {
-      spanElems = silverMilestone.children;
+    if (currentLevel == 4 || currentLevel == 7) {
+        let spanElems;
+        if (currentLevel == 4)  {
+            spanElems = silverMilestone.children;
+        }
+        if (currentLevel == 7 ) {
+            spanElems = goldMilestone.children;
+        }
+        for (let i = 0;i < spanElems.length; i++) {
+            toggleClass(spanElems[i], 'milestone-limit', true);
+        }
     }
-    if (currentLevel == 7 ) {
-      spanElems = goldMilestone.children;
-    }
-   for (let i = 0;i < spanElems.length; i++) {
-     toggleClass(spanElems[i], 'milestone-limit', true);
-   }
-   }
 }
 
 /** render the amount of pize won  **/
 function updatePrizeActive() {
-  const prizeActiveIndex = currentLevel + 1;
-  const maxThresholdIndex = getPrizeThresholdCategoryIndex();
-  const previousActiveState = prizeThreshold[maxThresholdIndex]['previousLevel'];
-  const currentActiveState = prizeThreshold[maxThresholdIndex]['level']
-  if (prizeActiveIndex == 5 || prizeActiveIndex == 8)  {
+    const prizeActiveIndex = currentLevel + 1;
+    const maxThresholdIndex = getPrizeThresholdCategoryIndex();
+    const previousActiveState = prizeThreshold[maxThresholdIndex]['previousLevel'];
+    const currentActiveState = prizeThreshold[maxThresholdIndex]['level']
+    if (prizeActiveIndex == 5 || prizeActiveIndex == 8)  {
+        toggleClass(prizeList[prizeActiveIndex], currentActiveState, true);
+        toggleClass(prizeList[prizeActiveIndex-1], previousActiveState, false);
+        return;
+    }
     toggleClass(prizeList[prizeActiveIndex], currentActiveState, true);
-    toggleClass(prizeList[prizeActiveIndex-1], previousActiveState, false);
-    return;
-  }
-  toggleClass(prizeList[prizeActiveIndex], currentActiveState, true);
-  toggleClass(prizeList[prizeActiveIndex-1], currentActiveState, false);
+    toggleClass(prizeList[prizeActiveIndex-1], currentActiveState, false);
 }
 
 /** rendering the answers in list  **/
 function renderAnswerBoxAndList(answers) {
-  answerBox = document.createElement('div');
-  answerList = document.createElement('ul');
-  toggleClass(answerBox, 'answer-box', true);
-  toggleClass(answerList, 'answer-list', true);
-  answerList.setAttribute('id', 'answer-list');
-  answers.forEach((ansObj, i) => {
-  const answer = document.createElement('li');
-  const figure = document.createElement('figure');
-  const imageElem = document.createElement('img');
-  const answerOpt = document.createElement('span');
-  imageElem.src = './assets/image/kbcanswerbg.png';
- // figure.appendChild(imageElem);
-  answerOpt.innerText = answerOptions[i];
-  answer.innerText = ansObj['answerText'];
-  answer.dataset.id = i;
-  answer.addEventListener('click', e => {
-      setAnswerEventListener(e);
-  });
+    answerBox = document.createElement('div');
+    answerList = document.createElement('ul');
+    toggleClass(answerBox, 'answer-box', true);
+    toggleClass(answerList, 'answer-list', true);
+    answerList.setAttribute('id', 'answer-list');
+    answers.forEach((ansObj, i) => {
+        const answer = document.createElement('li');
+        const figure = document.createElement('figure');
+        const imageElem = document.createElement('img');
+        const answerOpt = document.createElement('span');
+        imageElem.src = './assets/image/kbcanswerbg.png';
+        // figure.appendChild(imageElem);
+        answerOpt.innerText = answerOptions[i];
+        answer.innerText = ansObj['answerText'];
+        answer.dataset.id = i;
+        answer.addEventListener('click', e => {
+            setAnswerEventListener(e);
+        });
 
-    answer.appendChild(answerOpt);
-    toggleClass(answer, 'hide', true);
-    answerList.appendChild(answer);
-  });
-  answerListElems = answerList.getElementsByTagName('li');
-  answerBox.appendChild(answerList);
-  questionContainer.appendChild(answerBox);
+        answer.appendChild(answerOpt);
+        toggleClass(answer, 'hide', true);
+        answerList.appendChild(answer);
+    });
+    answerListElems = answerList.getElementsByTagName('li');
+    answerBox.appendChild(answerList);
+    questionContainer.appendChild(answerBox);
 }
 
 
 /** setting event listener for each answer **/
 function setAnswerEventListener(evt) {
-    console.log('evt', evt);
   const id = evt.target.dataset.id;
-  console.log('id', id);
   if (twoTimesTempAnswer) {
       toggleClass(evt.target, 'temp-select', true);
       twoTimesTempAnswer = false;
       tempAns = id;
       return;
-  }Times
+  }
  checkAnswer(id);
 }
 
