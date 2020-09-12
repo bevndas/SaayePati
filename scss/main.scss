@@ -554,7 +554,7 @@ $bronze-color: #cd7f32;
   opacity: 0.4;
 }
 .temp-select{
-  background: $disabled-color;
+  background: $disabled-color!important;
 }
 .remove {
   display: none;
