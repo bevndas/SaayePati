@@ -1,0 +1,208 @@
+																{
+ "bronze": [
+
+   {
+   "question": "Which language is the mostly widely spoken in South America?",
+   "answers": [{
+     "answerText": "French",
+     "status": "false"
+     },
+   {
+     "answerText": "Spanish",
+     "status": "true"
+     },
+   {
+     "answerText": "German",
+     "status": "false"
+     }, {
+       "answerText": "Italian",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "What are the five interrogative or Wh words?",
+     "answers": [{			
+       "answerText": "Who, What, When, Where, Why",
+       "status": "true"
+       },
+     {
+       "answerText": "Whose, When, Why, How, Which",
+       "status": "false"
+       },
+     {
+       "answerText": "How, Which, Where, What, When",
+       "status": "false"
+       },
+     {
+       "answerText": "What, When, How, Where, Who",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "What is the most eaten food in the world?",
+     "answers": [{
+       "answerText": "Pizza",
+       "status": "false"
+       },
+     {
+       "answerText": "Burger",
+       "status": "false"
+       },
+     {
+       "answerText": "Pasta",
+       "status": "false"
+       },
+     {
+       "answerText": "Rice",
+       "status": "true"
+       }]
+   },
+
+
+   {
+     "question": "How many rings make up the Olympic Games symbol?",
+     "answers": [{
+       "answerText": "3",
+       "status": "false"
+       },
+     {
+       "answerText": "4",
+       "status": "false"
+       },
+     {
+       "answerText": "5",
+       "status": "true"
+       },
+     {
+       "answerText": "6",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "What was the most-watched series on Netflix in 2019??",
+     "answers": [{
+       "answerText": "Game of Thrones",
+       "status": "false"
+       },
+     {
+       "answerText": "Stranger Things",
+       "status": "true"
+       },
+     {
+       "answerText": "Sherlock",
+       "status": "false"
+       },
+     {
+       "answerText": "Full House",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "In football, which team has won the Champions League (formerly the European Cup) the most??",
+     "answers": [{
+       "answerText": "Barcelona",
+       "status": "false"
+       },
+     {
+       "answerText": "Inter Milan",
+       "status": "false"
+       },
+     {
+       "answerText": "Real Madrid",
+       "status": "true"
+       },
+     {
+       "answerText": "Manchester United",
+       "status": "false"
+       }]
+   },
+
+{
+     "question": "which is the longest river of Nepal?",
+     "answers": [{
+	       "answerText": "Bagmati",
+       "status": "false"
+       },
+     {
+       "answerText": "Karnali",
+       "status": "true"
+       },
+     {
+       "answerText": "Bheri",
+       "status": "false"
+       },
+     {
+       "answerText": "Arun",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": "When Was the First IPhone Ever Invented?",
+     "answers": [{	
+       "answerText": "1995",
+       "status": "false"
+       },
+     {
+       "answerText": "2000",
+       "status": "false"
+       },
+     {
+       "answerText": "2010",
+       "status": "true"
+       },
+     {
+       "answerText": "2007",
+       "status": "false"
+       }]
+   },
+
+
+   {
+     "question": "In Friends, What are the names of Frank and Alice’s triplets?",
+     "answers": [{
+       "answerText": "Ross, Monica and Bill Jr. Jr",
+       "status": "false"
+       },
+     {
+       "answerText": "Chandler, Lesley and Frank Jr. Jr.",
+       "status": "true"
+       },
+     {
+       "answerText": " Joey, Lucy and Fred Jr. Jr. ",
+       "status": "false"
+       },
+     {
+       "answerText": "Pheobe, Lola and Bob Jr. Jr. ",
+       "status": "false"
+       }]
+   },
+
+   {
+     "question": " What percentage of the Earth’s surface is made up of the Atlantic Ocean?",
+     "answers": [{
+       "answerText": " 20%",
+       "status": "true"	
+       },
+     {
+       "answerText": "40%",
+       "status": "false"
+       },
+     {
+       "answerText": "10%",
+       "status": "false"
+       },
+     {
+       "answerText": "30%",
+       "status": "false"
+       }]
+   }
+
+  ]
+ }
+
