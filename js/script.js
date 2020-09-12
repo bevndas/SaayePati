@@ -503,7 +503,7 @@ function setAnswerEventListener(evt) {
       twoTimesTempAnswer = false;
       tempAns = id;
       return;
-  }
+  }Times
  checkAnswer(id);
 }
 
